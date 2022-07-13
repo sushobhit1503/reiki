@@ -3,7 +3,7 @@ import SimpleReactFooter from "simple-react-footer"
 
 class Courses extends React.Component {
     render() {
-        const description = "According to wikipedia, the cat (Felis catus) is a domestic species of small carnivorous mammal. It is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family. A cat can either be a house cat, a farm cat or a feral cat; the latter ranges freely and avoids human contact."
+        const description = "The Healing Centre cares for you. It cures all diseases, ailments and problem through divine healing in the form of reiki. You get free treatment and consultation from our Reiki Grandmaster Dr. Jyoti Prabha Srivastava. Learn healing and get degrees of reiki, dowser and attunements."
         const columns = [
             {
                 title: "Legal",
@@ -35,10 +35,10 @@ class Courses extends React.Component {
         return (
             <div>
                 <SimpleReactFooter style={{ width: "1000px" }} description={description}
-                    title="About ReikiName"
+                    title="ABOUT OUR CENTRE"
                     columns={columns}
-                    copyright="REIKINAME"
-                    backgroundColor="yellow"
+                    copyright="THE HEALING CENTRE"
+                    backgroundColor="green"
                     fontColor="black"
                     copyrightColor="grey"
                 />

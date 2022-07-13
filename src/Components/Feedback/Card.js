@@ -13,7 +13,7 @@ class Card extends React.Component {
                             {this.props.head}
                         </div>
                         <div>
-                            <StarsRating count={5} value={this.props.rating} color={"yellow"} />
+                            <StarsRating edit={false} count={5} value={this.props.rating} color={"green"} />
                         </div>
                     </ToastHeader>
                     <ToastBody style={{ textAlign: "left" }}>

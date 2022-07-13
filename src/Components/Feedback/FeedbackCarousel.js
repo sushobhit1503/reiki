@@ -9,7 +9,7 @@ class FeedbackCarousel extends React.Component {
             <div>
                 <div style={{ margin: "30px 30px 30px 130px", display: "flex", flexDirection: "column" }}>
                     <h3>WHAT OUR PATIENTS SAY ?</h3>
-                    <div style={{ height: "3px", width: "50px", backgroundColor: "yellow" }}></div>
+                    <div style={{ height: "3px", width: "50px", backgroundColor: "green" }}></div>
                     <Carousel autoPlay={true} infiniteLoop={true} interval={12000}
                         useKeyboardArrows={true} swipeable={true} showThumbs={false}
                         showStatus={false} showIndicators={false} stopOnHover={false}>
@@ -19,14 +19,8 @@ class FeedbackCarousel extends React.Component {
                             <Card rating={5} head="Rakhi" content="Very nice experience. Cure was very fast." />
                         </div>
                         <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Card head="Saurabh" content="Very nice experience. Cure was very fast." />
-                            <Card head="Shekhar" content="Very nice experience. Cure was very fast." />
-                            <Card head="Ratnesh" content="Very nice experience. Cure was very fast." />
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
-                            <Card head="Shobha" content="Very nice experience. Cure was very fast." />
-                            <Card head="Shobha" content="Very nice experience. Cure was very fast." />
-                            <Card head="Shobha" content="Very nice experience. Cure was very fast." />
+                            <Card rating={5} head="Sonal Tatia" content="Excellent, she is very good teacher. Reiki se hame bohot benefit hua." />
+                            <Card rating={5} head="Princy Palshetkar" content="Bahot achha laga reiki sikhke aunty se.. Bahot positive feel hota hai aunty ki awaz sunkar hi.. Reiki sikhne ke related jo bhi materials diye woh bahut helpful hai.." />
                         </div>
                     </Carousel>
                 </div>

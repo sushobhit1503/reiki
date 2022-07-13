@@ -14,7 +14,13 @@ class Card extends React.Component {
                         {this.props.content}
                         <br />
                         <div style={{ textAlign: "center" }}>
-                            <a href="/courses">LEARN MORE</a>
+                            <a href="/courses">{localStorage.getItem("lang") === "en" ?
+                                <div>
+                                    LEARN MORE
+                                </div> :
+                                <div>
+                                    और देखें
+                                </div>}</a>
                         </div>
                     </ToastBody>
                 </Toast>

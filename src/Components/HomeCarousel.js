@@ -1,6 +1,10 @@
 import React from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from "react-responsive-carousel"
+import Treatment from "./Carousels/Treatment"
+import Consultation from "./Carousels/Consultation"
+import Tests from "./Carousels/Tests"
+import About from "./Carousels/About"
 
 class HomeCarousel extends React.Component {
     constructor() {
@@ -11,18 +15,21 @@ class HomeCarousel extends React.Component {
     }
     render() {
         return (
-            <div style={{ position: "absolute", top: 0, zIndex: "-1" }}>
-                <Carousel autoPlay={true} infiniteLoop={true} interval={3000}
+            <div>
+                <Carousel autoPlay={false} infiniteLoop={true} interval={3000}
                     useKeyboardArrows={true} swipeable={true} showThumbs={false}
                     showStatus={false} showIndicators={false} stopOnHover={false}>
                     <div>
-                        <img alt="reiki" src="https://picsum.photos/id/123/1200/600" />
+                        <Treatment />
                     </div>
                     <div>
-                        <img alt="reiki" src="https://picsum.photos/id/456/1200/600" />
+                        <Consultation />
                     </div>
                     <div>
-                        <img alt="reiki" src="https://picsum.photos/id/678/1200/600" />
+                        <Tests />
+                    </div>
+                    <div>
+                        <About />
                     </div>
                 </Carousel>
             </div>

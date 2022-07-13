@@ -3,7 +3,6 @@ import { firestore, storage } from "../Config Files/firebaseConfig"
 import { Button, Input, Label, InputGroup, InputGroupText } from "reactstrap"
 import Loading from "../Components/Loading"
 import "./Profile.css"
-import Footer from "../Components/Footer"
 
 class MyProfile extends React.Component {
     constructor() {
@@ -75,7 +74,7 @@ class MyProfile extends React.Component {
                             {this.state.alert}
                         </div>
                         <h3>MY PROFILE</h3>
-                        <div style={{ height: "3px", width: "150px", backgroundColor: "yellow" }}></div>
+                        <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
                         <div className="changeFlex" style={{ display: "flex", margin: "10px 10px 10px 0px", justifyContent: "space-between" }}>
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
                                 {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", heigh: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
@@ -103,9 +102,8 @@ class MyProfile extends React.Component {
                             </div>
                         </div>
                         <h3 style={{ marginTop: "10px" }}>ENROLLED COURSES</h3>
-                        <div style={{ height: "3px", width: "150px", backgroundColor: "yellow" }}></div>
+                        <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
                     </div>}
-                <Footer />
             </div>
         )
     }

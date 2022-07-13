@@ -6,7 +6,7 @@ class Loading extends React.Component {
         return (
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <div>
-                    <RingLoader color="yellow" loading={true} size={100} />
+                    <RingLoader color="green" loading={true} size={100} />
                     Please Wait...
                 </div>
             </div>

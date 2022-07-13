@@ -29,7 +29,7 @@ class DegreeCard extends React.Component {
         }
         return (
             <div style={{ borderRadius: "8px 8px 0px 0px", boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px", margin: "5px" }}>
-                <div style={{ display: "flex", borderRadius: "8px 8px 0px 0px", flexDirection: "column", backgroundColor: "yellow", padding: "20px", justifyContent: "center", alignSelf: "center" }}>
+                <div style={{ display: "flex", borderRadius: "8px 8px 0px 0px", flexDirection: "column", backgroundColor: "green", padding: "20px", justifyContent: "center", alignSelf: "center" }}>
                     <h3 style={{ textAlign: "center" }}>{this.props.degree}</h3>
                     <div style={{ textAlign: "center" }}>Rs. {this.props.cost}</div>
                 </div>

@@ -1,6 +1,5 @@
 import React from "react"
 import { Breadcrumb, BreadcrumbItem, Button, Toast } from "reactstrap"
-import Calendar from "react-calendar"
 import "react-calendar/dist/Calendar.css"
 import Footer from "../Components/Footer"
 import { firestore } from "../Config Files/firebaseConfig"
@@ -139,7 +138,7 @@ class Book extends React.Component {
                     <div style={{ display: "flex", justifyContent: "center" }}>
                         <Toast style={{ margin: "20px", padding: "10px" }}>
                             <h3>THE GUIDELINES</h3>
-                            <div style={{ height: "3px", width: "150px", backgroundColor: "yellow", marginBottom: "10px" }}></div>
+                            <div style={{ height: "3px", width: "150px", backgroundColor: "green", marginBottom: "10px" }}></div>
                             <ul>
                                 <li>Lorem Ipsum</li><li>Lorem Ipsum</li>
                                 <li>Lorem Ipsum</li>
@@ -153,7 +152,7 @@ class Book extends React.Component {
                         </Toast>
                         <Toast style={{ margin: "20px", padding: "10px" }}>
                             <h3>NEXT SESSION</h3>
-                            <div style={{ height: "3px", width: "150px", backgroundColor: "yellow", marginBottom: "15px" }}></div>
+                            <div style={{ height: "3px", width: "150px", backgroundColor: "green", marginBottom: "15px" }}></div>
                             <div style={{ display: "flex" }}>
                                 <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>DATE :</div>
                                 <div style={{ alignSelf: "center", fontSize: "23px" }}>

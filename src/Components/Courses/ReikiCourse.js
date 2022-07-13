@@ -101,7 +101,7 @@ class ReikiCourse extends React.Component {
             <div>
                 <div style={{ margin: "30px 30px 30px 130px" }}>
                     <h3>ALL DEGREES FOR REIKI COURSE</h3>
-                    <div style={{ height: "3px", width: "150px", backgroundColor: "yellow" }}></div>
+                    <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", margin: "100px 0px 30px 30px" }}>
                     <DegreeCard id={first_degree.id} key={first_degree.id} degree={first_degree.name} cost={first_degree.cost} />

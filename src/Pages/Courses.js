@@ -1,6 +1,5 @@
 import React from "react"
 import HomeCarousel from "../Components/HomeCarousel"
-import Footer from "../Components/Footer"
 import OurCourses from "../Components/Courses/OurCourses"
 
 class Courses extends React.Component {
@@ -9,7 +8,6 @@ class Courses extends React.Component {
             <div>
                 <HomeCarousel />
                 <OurCourses />
-                <Footer />
             </div>
         )
     }
