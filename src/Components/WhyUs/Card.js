@@ -1,5 +1,6 @@
 import React from "react"
 import { Toast, ToastBody, ToastHeader } from "reactstrap"
+import Sentences from "../Sentences"
 
 
 class Card extends React.Component {
@@ -11,7 +12,9 @@ class Card extends React.Component {
                         {this.props.head}
                     </ToastHeader>
                     <ToastBody>
-                        {this.props.content}
+                        {this.props.content.props.children.map(each => {
+                            return <Sentences name={each} />
+                        })}
                     </ToastBody>
                 </Toast>
             </div>

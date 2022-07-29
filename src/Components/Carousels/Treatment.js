@@ -1,4 +1,5 @@
 import React from "react"
+import ReactPlayer from "react-player"
 
 class Treatment extends React.Component {
     render() {
@@ -8,7 +9,7 @@ class Treatment extends React.Component {
                     <h3>FREE TREATMENT</h3>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <img src={require("../../Assets/FIG.gif")} />
+                    <img src={require("../../Assets/PIG.gif")} />
                 </div>
             </div >
         )

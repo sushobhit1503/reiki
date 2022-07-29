@@ -1,4 +1,5 @@
 import React from "react"
+import ReactPlayer from "react-player"
 
 class Consultation extends React.Component {
     render() {
@@ -8,7 +9,7 @@ class Consultation extends React.Component {
                     <h3>FREE CONSULTATION</h3>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <img src={require("../../Assets/GIF.gif")} />
+                <img src={require("../../Assets/GIF.gif")} />
                 </div>
             </div>
         )

@@ -1,4 +1,5 @@
 import React from "react"
+import ReactPlayer from "react-player"
 
 class Tests extends React.Component {
     render() {
@@ -8,7 +9,7 @@ class Tests extends React.Component {
                     <h3>NO TESTS</h3>
                 </div>
                 <div style={{ width: "50%" }}>
-                    <img src={require("../../Assets/PIG.gif")} />
+                <img src={require("../../Assets/FIG.gif")} />
                 </div>
             </div >
         )

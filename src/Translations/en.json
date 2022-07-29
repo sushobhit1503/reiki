@@ -12,11 +12,26 @@
     "AboutMe.content": "I am a Reiki Grandmaster ",
     "WhyUs.headline": "WHY US ?",
     "WhyUs.head1": "NO TESTS",
-    "WhyUs.content1": "",
+    "WhyUs.content1": [
+        "No Blood Test",
+        "No Urine Test",
+        "No X-ray",
+        "No scans"
+    ],
     "WhyUs.head2": "FREE CONSULTATION",
-    "WhyUs.content2": "",
+    "WhyUs.content2": [
+        "No Blood Test",
+        "No Urine Test",
+        "No X-ray",
+        "No scans"
+    ],
     "WhyUs.head3": "FREE TREATMENT",
-    "WhyUs.content3": "",
+    "WhyUs.content3": [
+        "No Blood Test",
+        "No Urine Test",
+        "No X-ray",
+        "No scans"
+    ],
     "WhatWeOffer.headline": "WHAT WE OFFER ?",
     "WhatWeOffer.head1": "DEGREE OF REIKI",
     "WhatWeOffer.content1": "",
