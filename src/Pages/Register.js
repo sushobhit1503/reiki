@@ -4,7 +4,7 @@ import "react-calendar/dist/Calendar.css"
 import Footer from "../Components/Footer"
 import { firestore } from "../Config Files/firebaseConfig"
 
-class Book extends React.Component {
+class Register extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -118,76 +118,83 @@ class Book extends React.Component {
             }
         }
         return (
-            <div>
-                <div style={{ margin: "50px 0px 30px 30px" }}>
-                    <Breadcrumb>
-                        <BreadcrumbItem>
-                            <a href="/courses">
-                                REIKI COURSES
-                            </a>
-                        </BreadcrumbItem>
-                        <BreadcrumbItem>
-                            <a href="/courses/reiki">
-                                {localStorage.getItem("degree")}
-                            </a>
-                        </BreadcrumbItem>
-                        <BreadcrumbItem active>
-                            REGISTER
-                        </BreadcrumbItem>
-                    </Breadcrumb>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                        <Toast style={{ margin: "20px", padding: "10px" }}>
-                            <h3>THE GUIDELINES</h3>
-                            <div style={{ height: "3px", width: "150px", backgroundColor: "green", marginBottom: "10px" }}></div>
-                            <ul>
-                                <li>Lorem Ipsum</li><li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum</li>
-                            </ul>
-                        </Toast>
-                        <Toast style={{ margin: "20px", padding: "10px" }}>
-                            <h3>NEXT SESSION</h3>
-                            <div style={{ height: "3px", width: "150px", backgroundColor: "green", marginBottom: "15px" }}></div>
-                            <div style={{ display: "flex" }}>
-                                <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>DATE :</div>
-                                <div style={{ alignSelf: "center", fontSize: "23px" }}>
-                                    {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
-                                </div>
+            <div className="p-xl-5 p-3">
+                <Breadcrumb>
+                    <BreadcrumbItem>
+                        <a href="/courses">
+                            REIKI COURSES
+                        </a>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        <a href="/courses/reiki">
+                            {localStorage.getItem("degree")}
+                        </a>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        REGISTER
+                    </BreadcrumbItem>
+                </Breadcrumb>
+                <div className="d-flex justify-content-between my-3">
+                    <div className="col-xl-4 col-12">
+                        <div className="card mb-2 h-100">
+                            <div className="card-body">
+                                <div className="h3 mb-2 fw-bold">THE GUIDELINES</div>
+                                <ul>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                    <li>Lorem Ipsum</li>
+                                </ul>
                             </div>
-                            <div style={{ display: "flex" }}>
-                                <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>TIME :</div>
-                                <div style={{ alignSelf: "center", fontSize: "23px" }}>
-                                    {this.state.sessionTime === "NA" ? "Timings to be announced" : `${this.state.sessionTime}`}
-                                </div>
-                            </div>
-                            <div style={{ display: "flex" }}>
-                                <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>LINK :</div>
-                                <div style={{ alignSelf: "center", fontSize: "16px" }}>Will be shared after you have paid.</div>
-                            </div>
-                        </Toast>
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                        <div style={{ fontWeight: "700", alignSelf: "center", marginRight: "15px" }}>
-                            Rs. {this.state.amount}
                         </div>
-                        {!this.state.completed ? <Button onClick={onSubmit} color="success">
-                            <i style={{ marginRight: "5px" }} class="fa-solid fa-coins"></i>
-                            PAY NOW
-                        </Button> : <Button disabled={true} color="dark">
-                            ALREADY PAID
-                        </Button>}
-
                     </div>
+                    <div className="col-xl-4 col-12">
+                        <div className="card mb-2 h-100">
+                            <div className="card-body">
+                                <div className="h3 mb-2 fw-bold">NEXT SESSION</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <Toast>
+                        <div style={{ display: "flex" }}>
+                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>DATE :</div>
+                            <div style={{ alignSelf: "center", fontSize: "23px" }}>
+                                {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
+                            </div>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>TIME :</div>
+                            <div style={{ alignSelf: "center", fontSize: "23px" }}>
+                                {this.state.sessionTime === "NA" ? "Timings to be announced" : `${this.state.sessionTime}`}
+                            </div>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>LINK :</div>
+                            <div style={{ alignSelf: "center", fontSize: "16px" }}>Will be shared after you have paid.</div>
+                        </div>
+                    </Toast>
                 </div>
-                <Footer />
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div style={{ fontWeight: "700", alignSelf: "center", marginRight: "15px" }}>
+                        Rs. {this.state.amount}
+                    </div>
+                    {this.state.completed ? <Button onClick={onSubmit} color="success">
+                        <i class="fa-solid fa-coins me-2"></i>
+                        PAY NOW
+                    </Button> : <Button disabled={true} color="dark">
+                        ALREADY PAID
+                    </Button>}
+
+                </div>
             </div>
         )
     }
 }
 
-export default Book
+export default Register

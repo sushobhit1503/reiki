@@ -1,0 +1,25 @@
+.bg-primary-o {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.bg-secondary-o {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.bg-light-green-o {
+    background-color: var(--light-green);
+}
+
+.light-green-o {
+    color: var(--light-green);
+}
+
+.profile-image {
+    width: 15rem;
+}
+
+.white {
+    color: var(--white);
+}

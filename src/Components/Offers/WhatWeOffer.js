@@ -7,19 +7,12 @@ const HindiFile = require("../../Translations/hin.json")
 class WhatWeOffer extends React.Component {
     render() {
         return (
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <div style={{ margin: "30px 30px 30px 130px", display: "flex", flexDirection: "column" }}>
-                    <h3>
-                        {localStorage.getItem("lang") === "en" ?
-                            <div>
-                                {englishFile["WhatWeOffer.headline"]}
-                            </div> :
-                            <div>
-                                {HindiFile["WhatWeOffer.headline"]}
-                            </div>}
-                    </h3>
-                    <div style={{ height: "3px", width: "50px", backgroundColor: "green" }}></div>
-                    <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div>
+                <div className="p-xl-5 p-3">
+                    <div className="h3 fw-bold mb-3">
+                        WHAT WE OFFER?
+                    </div>
+                    <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
                         <Card key="1" head={localStorage.getItem("lang") === "en" ?
                             <div>
                                 {englishFile["WhatWeOffer.head1"]}

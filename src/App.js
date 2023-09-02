@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from "./Pages/HomePage"
 import Courses from './Pages/Courses';
 import ReikiCourse from './Components/Courses/ReikiCourse';
-import Book from './Pages/Book';
+import Register from './Pages/Register';
 import { auth } from "./Config Files/firebaseConfig";
 import MyProfile from './Pages/MyProfile';
 import Footer from "./Components/Footer";
@@ -36,14 +36,14 @@ class App extends React.Component {
         <Routes>
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/reiki" element={<ReikiCourse />} />
-          <Route path="/book/" element={<Book />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<MyProfile />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route exact path="/" element={<HomePage />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }

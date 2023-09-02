@@ -98,18 +98,16 @@ class ReikiCourse extends React.Component {
         const isValidPhone = /\d{10}/.test(this.state.phoneNumber)
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         return (
-            <div>
-                <div style={{ margin: "30px 30px 30px 130px" }}>
-                    <h3>ALL DEGREES FOR REIKI COURSE</h3>
-                    <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
+            <div className="mb-xl-5 mb-3 p-xl-5 p-3">
+                <div className="h3 fw-bold">
+                    ALL DEGREES FOR REIKI COURSE
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", margin: "100px 0px 30px 30px" }}>
+                <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
                     <DegreeCard id={first_degree.id} key={first_degree.id} degree={first_degree.name} cost={first_degree.cost} />
                     <DegreeCard id={second_degree.id} key={second_degree.id} degree={second_degree.name} cost={second_degree.cost} />
                     <DegreeCard id={third_degree.id} key={third_degree.id} degree={third_degree.name} cost={third_degree.cost} />
                     <DegreeCard id={master_degree.id} key={master_degree.id} degree={master_degree.name} cost={master_degree.cost} />
                 </div>
-                <Footer />
                 <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
                     <ModalHeader toggle={() => { this.setState({ isLogin: false, type: "LOGIN" }) }}>
                         {this.state.type === "LOGIN" ? "LOGIN" : "SIGN UP"}

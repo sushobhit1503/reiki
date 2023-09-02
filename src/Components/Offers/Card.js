@@ -5,25 +5,20 @@ import { Toast, ToastBody, ToastHeader } from "reactstrap"
 class Card extends React.Component {
     render() {
         return (
-            <div className="p-3 my-2 rounded">
-                <Toast style={{ width: "300px" }}>
-                    <ToastHeader>
-                        {this.props.head}
-                    </ToastHeader>
-                    <ToastBody>
-                        {this.props.content}
-                        <br />
-                        <div style={{ textAlign: "center" }}>
-                            <a href="/courses">{localStorage.getItem("lang") === "en" ?
-                                <div>
-                                    LEARN MORE
-                                </div> :
-                                <div>
-                                    और देखें
-                                </div>}</a>
+            <div>
+                <div className="col">
+                    <div className="card mb-2 h-100">
+                        <div className="card-body">
+                            <div className="h4 mb-3 fw-bold">{this.props.head}</div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </div>
+                            <div className="btn btn-success mt-3">
+                                Learn More
+                            </div>
                         </div>
-                    </ToastBody>
-                </Toast>
+                    </div>
+                </div>
             </div>
         )
     }

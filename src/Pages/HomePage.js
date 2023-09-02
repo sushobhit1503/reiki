@@ -10,7 +10,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <HomeCarousel />
+                {/* <HomeCarousel /> */}
                 <WhyUs />
                 <WhatWeOffer />
                 <AboutMe />

@@ -6,7 +6,7 @@ class Courses extends React.Component {
     render() {
         return (
             <div>
-                <HomeCarousel />
+                {/* <HomeCarousel /> */}
                 <OurCourses />
             </div>
         )

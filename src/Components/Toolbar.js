@@ -1,7 +1,7 @@
 import React from "react"
 import { Button, Input, InputGroup, InputGroupText, Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Collapse, Modal, ModalBody, ModalHeader } from "reactstrap"
 import { auth, firestore } from "../Config Files/firebaseConfig"
-import Logo from "../Assets/Logo1_Transparent.png"
+import Logo from "../Assets/HealingLogo.png"
 import firebase from "../Config Files/firebaseConfig"
 const englishFile = require("../Translations/en.json")
 const HindiFile = require("../Translations/hin.json")
@@ -86,11 +86,11 @@ class Toolbar extends React.Component {
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         return (
             <div>
-                <Navbar full={true} style={{ position: "fixed", width: "100%", zIndex: "1" }} expand="md" light>
+                <Navbar className="w-100 bg-primary-o" expand="md" light>
                     <NavbarBrand href="/">
-                        <img src={Logo} alt="Logo" style={{ width: "70px", margin: "0px" }} />
+                        <img src={Logo} alt="Logo" style={{ width: "70px" }} />
                     </NavbarBrand>
-                    <NavbarToggler onClick={() => { this.setState({ isOpen: !this.state.isOpen }) }} />
+                    <NavbarToggler className="me-3" onClick={() => { this.setState({ isOpen: !this.state.isOpen }) }} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="me-auto" navbar>
                             <NavItem>
@@ -140,7 +140,7 @@ class Toolbar extends React.Component {
                         </Nav>
                         {localStorage.getItem("uid") ? <UncontrolledDropdown inNavbar>
                             <DropdownToggle style={{ color: "green" }} caret nav>
-                                <i style={{ fontSize: "20px", color: "green" }} className="fa-solid fa-user" ></i>
+                                <i style={{ fontSize: "20px", color: "var(--secondary-color)" }} className="fa-solid fa-user" ></i>
                             </DropdownToggle>
                             <DropdownMenu end>
                                 <DropdownItem href="/profile">
@@ -172,7 +172,7 @@ class Toolbar extends React.Component {
                                         </div>}
                                 </DropdownItem>
                             </DropdownMenu>
-                        </UncontrolledDropdown> : <Button onClick={() => { this.setState({ isLogin: true }) }} color="primary" style={{ marginRight: "5px" }} >
+                        </UncontrolledDropdown> : <Button onClick={() => { this.setState({ isLogin: true }) }} color="primary" className="me-1" >
                             {localStorage.getItem("lang") === "en" ?
                                 <div>
                                     {englishFile["Toolbar.9"]}
@@ -197,8 +197,8 @@ class Toolbar extends React.Component {
                         {this.state.type === "LOGIN" ? "LOGIN" : "SIGN UP"}
                     </ModalHeader>
                     {this.state.type === "LOGIN" ? <ModalBody>
-                        <div style={{ marginBottom: "10px", display: "flex", justifyContent: "space-between" }}>
-                            <InputGroup style={{ width: "70%" }}>
+                        <div className="d-flex justify-content-between mb-3">
+                            <InputGroup className="w-75">
                                 <InputGroupText>
                                     +91
                                 </InputGroupText>

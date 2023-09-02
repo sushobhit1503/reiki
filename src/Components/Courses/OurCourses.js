@@ -1,84 +1,139 @@
 import React from "react"
-import Photo from "../../Assets/Photo.jpg"
-import { Button } from "reactstrap"
-const englishFile = require("../../Translations/en.json")
-const HindiFile = require("../../Translations/hin.json")
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar"
 
 class OurCourses extends React.Component {
     render() {
         return (
-            <div style={{ margin: "630px 0px 130px 30px" }}>
-                <h3>{localStorage.getItem("lang") === "en" ?
-                    <div>
-                        {englishFile["Courses.headline"]}
-                    </div> :
-                    <div>
-                        {HindiFile["Courses.headline"]}
-                    </div>}</h3>
-                <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
-                <div style={{ display: "flex", justifyContent: "space-around", margin: "20px" }}>
-                    <div style={{ margin: "20px", width: "53%" }}>
-                        <h3>{localStorage.getItem("lang") === "en" ?
-                            <div>
-                                {englishFile["Courses.head1"]}
-                            </div> :
-                            <div>
-                                {HindiFile["Courses.head1"]}
-                            </div>}</h3>
-                        <i>
-                            {localStorage.getItem("lang") === "en" ?
-                                <div>
-                                    {englishFile["Courses.content1"]}
-                                </div> :
-                                <div>
-                                    {HindiFile["Courses.content1"]}
-                                </div>}
-                        </i><br />
-                        <Button style={{ margin: "10px 0px 10px 0px" }} color="success">
-                            <a style={{ textDecoration: "none", color: "white" }} href="/courses/reiki">
-                                ENROL NOW
-                            </a>
-                        </Button>
-                    </div>
-                    <div style={{ margin: "20px" }}>
-                        <img src={Photo} style={{ borderRadius: "50%", width: "200px", height: "200px", border: "3px solid green" }} alt="Jyoti Prabha Srivastava" />
+            <div>
+                <div className="p-xl-5 p-3">
+                    <div className="h3 fw-bold">OUR COURSES</div>
+                    <div className="mt-3">
+                        <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3">
+                            <div className="col">
+                                <div className="card mb-2 h-100">
+                                    <div className="card-body">
+                                        <div className="h4 mb-2 fw-bold">REIKI</div>
+                                        <div>
+                                            <i className="bi bi-people-fill"></i>
+                                            <div>38 people completed this course</div>
+                                        </div>
+                                        <div>
+                                            <i className="bi bi-stopwatch"></i>
+                                            <div>7 days required</div>
+                                        </div>
+                                        <div className="mt-3 h5">
+                                            Rs. 700 onwards
+                                        </div>
+                                        <button className="btn btn-success mt-3">
+                                            Enrol Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="card mb-2 h-100">
+                                    <div className="card-body">
+                                        <div className="h4 mb-2 fw-bold">DOWSER</div>
+                                        <div>
+                                            <i className="bi bi-people-fill"></i>
+                                            <div>2 people completed this course</div>
+                                        </div>
+                                        <div>
+                                            <i className="bi bi-stopwatch"></i>
+                                            <div>3 days required</div>
+                                        </div>
+                                        <div className="mt-3 h5">
+                                            Rs. 2100
+                                        </div>
+                                        <button className="btn btn-success mt-3">
+                                            Enrol Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="card mb-2 h-100">
+                                    <div className="card-body">
+                                        <div className="h4 mb-2 fw-bold">CONCENTRATION</div>
+                                        <div>
+                                            <i className="bi bi-people-fill"></i>
+                                            <div>100 people completed this course</div>
+                                        </div>
+                                        <div>
+                                            <i className="bi bi-stopwatch"></i>
+                                            <div>30 days required</div>
+                                        </div>
+                                        <div className="mt-3 h5">
+                                            Rs. 900
+                                        </div>
+                                        <button className="btn btn-success mt-3">
+                                            Enrol Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="card mb-2 h-100">
+                                    <div className="card-body">
+                                        <div className="h4 mb-2 fw-bold">REIKI</div>
+                                        <div>
+                                            <i className="bi bi-people-fill"></i>
+                                            <div>38 people completed this course</div>
+                                        </div>
+                                        <div>
+                                            <i className="bi bi-stopwatch"></i>
+                                            <div>7 days required</div>
+                                        </div>
+                                        <div className="mt-3 h5">
+                                            Rs. 700 onwards
+                                        </div>
+                                        <button className="btn btn-success mt-3">
+                                            Enrol Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {/* <div style={{ display: "flex", justifyContent: "space-around", margin: "20px" }}>
-                    <div style={{ margin: "20px" }}>
-                        <img src={Photo} style={{ borderRadius: "50%", width: "200px", height: "200px", border: "3px solid green" }} alt="Jyoti Prabha Srivastava" />
-                    </div>
-                    <div style={{ margin: "20px", width: "53%" }}>
-                        <h3>DOWSER COURSE</h3>
-                        <i>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </i> <br />
-                        <Button style={{ margin: "10px 0px 10px 0px" }} color="success">ENROL NOW</Button>
-                    </div>
+                <div className="p-xl-5 p-3 mt-5">
+                    <div className="h3 fw-bold">REIKI COURSE JOURNEY</div>
+                    <ProgressBar
+                        percent={75}
+                        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+                    >
+                        <Step transition="scale">
+                            {({ accomplished }) => (
+                                <img
+                                    style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                                    width="30"
+                                    src="https://vignette.wikia.nocookie.net/pkmnshuffle/images/9/9d/Pichu.png/revision/latest?cb=20170407222851"
+                                />
+                            )}
+                        </Step>
+                        <Step transition="scale">
+                            {({ accomplished }) => (
+                                <img
+                                    style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                                    width="30"
+                                    src="https://vignette.wikia.nocookie.net/pkmnshuffle/images/9/97/Pikachu_%28Smiling%29.png/revision/latest?cb=20170410234508"
+                                />
+                            )}
+                        </Step>
+                        <Step transition="scale">
+                            {({ accomplished }) => (
+                                <img
+                                    style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+                                    width="30"
+                                    src="https://orig00.deviantart.net/493a/f/2017/095/5/4/raichu_icon_by_pokemonshuffle_icons-db4ryym.png"
+                                />
+                            )}
+                        </Step>
+                    </ProgressBar>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-around", margin: "20px" }}>
-                    <div style={{ margin: "20px", width: "53%" }}>
-                        <h3>REIKI COURSE</h3>
-                        <i>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </i><br />
-                        <Button style={{ margin: "10px 0px 10px 0px" }} color="success">ENROL NOW</Button>
-                    </div>
-                    <div style={{ margin: "20px" }}>
-                        <img src={Photo} style={{ borderRadius: "50%", width: "200px", height: "200px", border: "3px solid green" }} alt="Jyoti Prabha Srivastava" />
-                    </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-around", margin: "20px" }}>
-                    <div style={{ margin: "20px" }}>
-                        <img src={Photo} style={{ borderRadius: "50%", width: "200px", height: "200px", border: "3px solid green" }} alt="Jyoti Prabha Srivastava" />
-                    </div>
-                    <div style={{ margin: "20px", width: "53%" }}>
-                        <h3>DOWSER COURSE</h3>
-                        <i>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </i> <br />
-                        <Button style={{ margin: "10px 0px 10px 0px" }} color="success">ENROL NOW</Button>
-                    </div>
+                {/* <div className="p-xl-5 p-3 mt-5">
+                    <div className="h3 fw-bold">OUR TEACHERS</div>
                 </div> */}
             </div>
         )

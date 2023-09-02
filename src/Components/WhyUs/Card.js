@@ -6,17 +6,15 @@ import Sentences from "../Sentences"
 class Card extends React.Component {
     render() {
         return (
-            <div className="p-3 my-2 rounded">
-                <Toast style={{ width: "300px" }}>
-                    <ToastHeader>
-                        {this.props.head}
-                    </ToastHeader>
-                    <ToastBody>
+            <div className="col">
+                <div className="card mb-2 h-100">
+                    <div className="card-body">
+                        <div className="h4 mb-2 fw-bold">{this.props.head}</div>
                         {this.props.content.props.children.map(each => {
                             return <Sentences name={each} />
                         })}
-                    </ToastBody>
-                </Toast>
+                    </div>
+                </div>
             </div>
         )
     }
