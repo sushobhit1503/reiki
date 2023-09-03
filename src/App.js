@@ -13,6 +13,7 @@ import Experience from './Pages/Experience';
 import Privacy from './Pages/Privacy';
 import Terms from './Pages/Terms';
 import About from './Pages/About';
+import Consultation from './Pages/Consultation';
 
 class App extends React.Component {
   constructor() {
@@ -44,6 +45,7 @@ class App extends React.Component {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route exact path="/" element={<HomePage />} />
+          <Route exact path="/consultation" element={<Consultation />} />
         </Routes>
         {/* <Footer /> */}
       </div>

@@ -25,9 +25,9 @@ class OurCourses extends React.Component {
                                         <div className="mt-3 h5">
                                             Rs. 700 onwards
                                         </div>
-                                        <button className="btn btn-success mt-3">
+                                        <a href="/courses/reiki" className="btn btn-success mt-3">
                                             Enrol Now
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

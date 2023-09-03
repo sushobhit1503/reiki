@@ -1,6 +1,5 @@
 import React from "react"
 import { Breadcrumb, BreadcrumbItem, Button, Toast } from "reactstrap"
-import "react-calendar/dist/Calendar.css"
 import Footer from "../Components/Footer"
 import { firestore } from "../Config Files/firebaseConfig"
 
@@ -157,35 +156,35 @@ class Register extends React.Component {
                         <div className="card mb-2 h-100">
                             <div className="card-body">
                                 <div className="h3 mb-2 fw-bold">NEXT SESSION</div>
-                                
+
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
-                            <div style={{ display: "flex" }}>
-                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>DATE :</div>
-                            <div style={{ alignSelf: "center", fontSize: "23px" }}>
-                                {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
-                            </div>
-                        </div>
-                        <div style={{ display: "flex" }}>
-                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>TIME :</div>
-                            <div style={{ alignSelf: "center", fontSize: "23px" }}>
-                                {this.state.sessionTime === "NA" ? "Timings to be announced" : `${this.state.sessionTime}`}
-                            </div>
-                        </div>
-                        <div style={{ display: "flex" }}>
-                            <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>LINK :</div>
-                            <div style={{ alignSelf: "center", fontSize: "16px" }}>Will be shared after you have paid.</div>
-                        </div>
+                                <div className="d-flex">
+                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>DATE :</div>
+                                    <div className="align-self-center">
+                                        {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
+                                    </div>
+                                </div>
+                                <div className="d-flex">
+                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>TIME :</div>
+                                    <div className="align-self-center">
+                                        {this.state.sessionTime === "NA" ? "Timings to be announced" : `${this.state.sessionTime}`}
+                                    </div>
+                                </div>
+                                <div className="d-flex">
+                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>LINK :</div>
+                                    <div className="align-self-center">Will be shared after you have paid.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                    <div style={{ fontWeight: "700", alignSelf: "center", marginRight: "15px" }}>
+                <div className="d-flex justify-content-center">
+                    <div className="align-self-center me-3" style={{ fontWeight: "700" }}>
                         Rs. {this.state.amount}
                     </div>
                     {this.state.completed ? <Button onClick={onSubmit} color="success">
