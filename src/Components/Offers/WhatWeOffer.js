@@ -13,7 +13,7 @@ class WhatWeOffer extends React.Component {
                         WHAT WE OFFER?
                     </div>
                     <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
-                        <Card key="1" head={localStorage.getItem("lang") === "en" ?
+                        <Card displayed={true} key="1" head={localStorage.getItem("lang") === "en" ?
                             <div>
                                 {englishFile["WhatWeOffer.head1"]}
                             </div> :
@@ -26,7 +26,7 @@ class WhatWeOffer extends React.Component {
                                 <div>
                                     {HindiFile["WhatWeOffer.content1"]}
                                 </div>} />
-                        <Card key="2" head={localStorage.getItem("lang") === "en" ?
+                        <Card displayed={true} key="2" head={localStorage.getItem("lang") === "en" ?
                             <div>
                                 {englishFile["WhatWeOffer.head2"]}
                             </div> :
@@ -39,7 +39,7 @@ class WhatWeOffer extends React.Component {
                                 <div>
                                     {HindiFile["WhatWeOffer.content2"]}
                                 </div>} />
-                        <Card key="3" head={localStorage.getItem("lang") === "en" ?
+                        <Card displayed={true} key="3" head={localStorage.getItem("lang") === "en" ?
                             <div>
                                 {englishFile["WhatWeOffer.head3"]}
                             </div> :

@@ -134,7 +134,7 @@ class Register extends React.Component {
                         REGISTER
                     </BreadcrumbItem>
                 </Breadcrumb>
-                <div className="d-flex justify-content-between my-3">
+                <div className="row row-cols-xl-3 row-cols-1 my-3 g-3">
                     <div className="col-xl-4 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
@@ -161,8 +161,10 @@ class Register extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <Toast>
-                        <div style={{ display: "flex" }}>
+                    <div className="col-xl-4 col-12">
+                        <div className="card mb-2 h-100">
+                            <div className="card-body">
+                            <div style={{ display: "flex" }}>
                             <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>DATE :</div>
                             <div style={{ alignSelf: "center", fontSize: "23px" }}>
                                 {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
@@ -178,7 +180,9 @@ class Register extends React.Component {
                             <div style={{ fontSize: "23px", fontWeight: "600", marginRight: "10px" }}>LINK :</div>
                             <div style={{ alignSelf: "center", fontSize: "16px" }}>Will be shared after you have paid.</div>
                         </div>
-                    </Toast>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <div style={{ fontWeight: "700", alignSelf: "center", marginRight: "15px" }}>

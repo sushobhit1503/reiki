@@ -12,6 +12,7 @@ import Footer from "./Components/Footer";
 import Experience from './Pages/Experience';
 import Privacy from './Pages/Privacy';
 import Terms from './Pages/Terms';
+import About from './Pages/About';
 
 class App extends React.Component {
   constructor() {
@@ -38,6 +39,7 @@ class App extends React.Component {
           <Route path="/courses/reiki" element={<ReikiCourse />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<MyProfile />} />
+          <Route path="/about-reiki" element={<About />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

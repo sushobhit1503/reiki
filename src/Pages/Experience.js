@@ -1,7 +1,23 @@
 import React from "react"
-import ReactPlayer from "react-player/youtube"
+import axios from "axios";
 
 class Experience extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            allVideos: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyA0gXddiOyr_1NYYhJsl4kC1bxIdJgitto&channelId=UCS63FNfjaT_PgiOiVa2WJyg&part=snippet,id&order=date&maxResults=6`)
+            .then((response) => {
+                this.setState({ allVideos: response.data.items })
+            })
+            .catch((error) => {
+                console.error('Error fetching videos:', error);
+            });
+    }
     render() {
         return (
             <div>
@@ -23,48 +39,23 @@ class Experience extends React.Component {
                 <div className="p-xl-5 p-3">
                     <div className="h3 fw-bold">WATCH OUR VIDEOS</div>
                     <div className="mt-3">
-                        <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3">
-                            <div className="col">
-                                <div className="card mb-2" style={{height:"300px"}}>
-                                    <div className="card-body">
-
-                                    </div>
+                        <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
+                            {this.state.allVideos.map((video) => (
+                                <div className="col" key={video.id.videoId}>
+                                    <iframe
+                                        className="w-100"
+                                        src={`https://www.youtube.com/embed/${video.id.videoId}`}
+                                        height="300"
+                                        allowFullScreen
+                                        title={video.snippet.title}
+                                    ></iframe>
+                                    <div className="h6">{video.snippet.title}</div>
                                 </div>
-                                <div className="h5">
-                                    Advantages of Reiki
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="card mb-2" style={{height:"300px"}}>
-                                    <div className="card-body">
-
-                                    </div>
-                                </div>
-                                <div className="h5">
-                                    Vidya Shakti Paat
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="card mb-2" style={{height:"300px"}}>
-                                    <div className="card-body">
-
-                                    </div>
-                                </div>
-                                <div className="h5">
-                                    Fast effect of reiki
-                                </div>
-                            </div>
-                            <div className="col">
-                                <div className="card mb-2" style={{height:"300px"}}>
-                                    <div className="card-body">
-
-                                    </div>
-                                </div>
-                                <div className="h5">
-                                    Hoponoppono Prayer
-                                </div>
-                            </div>
+                            ))}
                         </div>
+                    </div>
+                    <div className="mt-3 text-center">
+                        <a target="_blank" href="https://www.youtube.com/@reiki-healing-centre/videos" className="text-decoration-underline">VIEW MORE</a>
                     </div>
                 </div>
             </div>
