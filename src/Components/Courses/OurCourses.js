@@ -1,6 +1,5 @@
 import React from "react"
-import "react-step-progress-bar/styles.css";
-import { ProgressBar, Step } from "react-step-progress-bar"
+import ProgressBar from "../ProgressBar";
 
 class OurCourses extends React.Component {
     render() {
@@ -99,8 +98,8 @@ class OurCourses extends React.Component {
                 </div>
                 <div className="p-xl-5 p-3 mt-5">
                     <div className="h3 fw-bold">REIKI COURSE JOURNEY</div>
-                    <ProgressBar
-                        percent={75}
+                    {/* <ProgressBar
+                        percent={50}
                         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
                     >
                         <Step transition="scale">
@@ -130,7 +129,8 @@ class OurCourses extends React.Component {
                                 />
                             )}
                         </Step>
-                    </ProgressBar>
+                    </ProgressBar> */}
+                    <ProgressBar />
                 </div>
                 {/* <div className="p-xl-5 p-3 mt-5">
                     <div className="h3 fw-bold">OUR TEACHERS</div>

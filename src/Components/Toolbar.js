@@ -86,7 +86,7 @@ class Toolbar extends React.Component {
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         return (
             <div>
-                <Navbar className="w-100 bg-primary-o" expand="md" light>
+                <Navbar style={{zIndex: "1"}} className="w-100 position-absolute" expand="md" light>
                     <NavbarBrand href="/">
                         <img src={Logo} alt="Logo" style={{ width: "70px" }} />
                     </NavbarBrand>

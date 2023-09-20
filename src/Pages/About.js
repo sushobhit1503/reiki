@@ -1,12 +1,32 @@
 import React from "react";
 import Card from "../Components/Offers/Card"
-const englishFile = require("../Translations/en.json")
-const HindiFile = require("../Translations/hin.json")
+import { Button } from "reactstrap";
 
 class About extends React.Component {
     render () {
         return (
             <div>
+                <div>
+                    <div className="background-image pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
+                        <div className="col">
+                            <div className="mt-5 h3 fw-bold mb-3">
+                                WHAT IS REIKI?
+                            </div>
+                            <div>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat.
+                            </div>
+                            <Button color="success" className="mt-3" >
+                                START LEARNING
+                            </Button>
+                        </div>
+                        <div className="col d-none d-md-block">
+                            IMAGE
+                        </div>
+                    </div>
+                </div>
                 <div className="p-xl-5 p-3">
                     <div className="h3 fw-bold mb-3">
                         ADVANTAGES OF REIKI?
