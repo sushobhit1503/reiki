@@ -27,7 +27,7 @@ class App extends React.Component {
     auth.onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem("uid", user.uid)
-        this.setState({ user: user }, () => { console.log(this.state.user) })
+        this.setState({ user: user })
       }
     })
   }
@@ -47,7 +47,7 @@ class App extends React.Component {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/consultation" element={<Consultation />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     )
   }

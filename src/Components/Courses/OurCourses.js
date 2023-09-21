@@ -96,8 +96,7 @@ class OurCourses extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="p-xl-5 p-3 mt-5">
-                    <div className="h3 fw-bold">REIKI COURSE JOURNEY</div>
+                    {/* <div className="h3 fw-bold">REIKI COURSE JOURNEY</div> */}
                     {/* <ProgressBar
                         percent={50}
                         filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
@@ -130,8 +129,7 @@ class OurCourses extends React.Component {
                             )}
                         </Step>
                     </ProgressBar> */}
-                    <ProgressBar />
-                </div>
+                    {/* <ProgressBar /> */}
                 {/* <div className="p-xl-5 p-3 mt-5">
                     <div className="h3 fw-bold">OUR TEACHERS</div>
                 </div> */}

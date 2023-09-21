@@ -152,15 +152,6 @@ class Toolbar extends React.Component {
                                             {HindiFile["Toolbar.6"]}
                                         </div>}
                                 </DropdownItem>
-                                <DropdownItem>
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.7"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.7"]}
-                                        </div>}
-                                </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem onClick={() => { localStorage.removeItem("uid"); auth.signOut(); window.location.reload() }}>
                                     {localStorage.getItem("lang") === "en" ?

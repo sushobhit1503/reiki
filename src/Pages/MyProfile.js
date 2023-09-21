@@ -66,43 +66,43 @@ class MyProfile extends React.Component {
         return (
             <div>
                 {this.state.isLoading ? <Loading /> :
-                    <div style={{ display: "flex", flexDirection: "column", margin: "30px" }}>
+                    <div className="pt-5">
                         <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
                             {this.state.error}
                         </div>
                         <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
                             {this.state.alert}
                         </div>
-                        <h3>MY PROFILE</h3>
-                        <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
-                        <div className="changeFlex" style={{ display: "flex", margin: "10px 10px 10px 0px", justifyContent: "space-between" }}>
-                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                                {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", heigh: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
-                                    : <i className="fa fa-user-circle" style={{ fontSize: "200px", color: "grey" }}></i>}
-                                <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px", marginTop: "10px" }} type="file" />
-                                <Button disabled={disabled} onClick={storePicture} type="file" color="success" style={{ marginTop: "10px", width: "200px" }}> UPLOAD PHOTO</Button>
+                        <div className="p-xl-5 p-3">
+                            <div className="h3 fw-bold mt-3">MY PROFILE</div>
+                            <div className="d-flex flex-md-row flex-column m-3 ms-0 gap-3">
+                                <div className="d-flex flex-column justify-content-center">
+                                    {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", heigh: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
+                                        : <i className="fa fa-user-circle" style={{ fontSize: "200px", color: "grey" }}></i>}
+                                    <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px", marginTop: "10px" }} type="file" />
+                                    <Button disabled={disabled} onClick={storePicture} type="file" color="success" style={{ marginTop: "10px", width: "200px" }}> UPLOAD PHOTO</Button>
+                                </div>
+                                <div className="d-flex flex-wrap">
+                                    <div className="m-2">
+                                        <Label className="m-0">Name</Label>
+                                        <Input value={this.state.user.name} disabled={true} className="mb-2" style={{width: "max-content" }} />
+                                    </div>
+                                    <div className="m-2">
+                                        <Label className="m-0">Age</Label>
+                                        <Input value={this.state.user.age} disabled={true} className="mb-2" style={{width: "max-content" }} />
+                                    </div>
+                                    <div className="m-2">
+                                        <Label className="m-0">Phone Number</Label>
+                                        <InputGroup>
+                                            <InputGroupText>
+                                                +91 {this.state.user.phoneNumber}
+                                            </InputGroupText>
+                                        </InputGroup>
+                                    </div>
+                                </div>
                             </div>
-                            <div style={{ display: "flex", flexWrap: "wrap", width: "60%" }}>
-                                <div style={{ margin: "5px" }}>
-                                    <Label style={{ margin: "0px" }}>Name</Label>
-                                    <Input value={this.state.user.name} disabled={true} style={{ marginBottom: "10px", width: "max-content" }} />
-                                </div>
-                                <div style={{ margin: "5px" }}>
-                                    <Label style={{ margin: "0px" }}>Age</Label>
-                                    <Input value={this.state.user.age} disabled={true} style={{ marginBottom: "10px", width: "max-content" }} />
-                                </div>
-                                <div style={{ margin: "5px" }}>
-                                    <Label style={{ margin: "0px" }}>Phone Number</Label>
-                                    <InputGroup style={{ width: "70%" }}>
-                                        <InputGroupText>
-                                            +91 {this.state.user.phoneNumber}
-                                        </InputGroupText>
-                                    </InputGroup>
-                                </div>
-                            </div>
+                            <div className="h3 fw-bold mt-5">ENROLLED COURSES</div>
                         </div>
-                        <h3 style={{ marginTop: "10px" }}>ENROLLED COURSES</h3>
-                        <div style={{ height: "3px", width: "150px", backgroundColor: "green" }}></div>
                     </div>}
             </div>
         )

@@ -99,7 +99,7 @@ class ReikiCourse extends React.Component {
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         return (
             <div className="mb-xl-5 mb-3 p-xl-5 p-3">
-                <div className="h3 fw-bold">
+                <div className="h3 fw-bold mt-5">
                     ALL DEGREES FOR REIKI COURSE
                 </div>
                 <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">

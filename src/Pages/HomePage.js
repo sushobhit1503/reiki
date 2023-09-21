@@ -22,7 +22,7 @@ class HomePage extends React.Component {
                                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                                 aliquip ex ea commodo consequat.
                             </div>
-                            <Button color="success" className="mt-3" >
+                            <Button href="/courses" color="success" className="mt-3" >
                                 START LEARNING
                             </Button>
                         </div>

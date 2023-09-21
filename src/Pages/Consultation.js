@@ -1,7 +1,9 @@
 import React from "react"
 import moment from 'moment';
 import ReactTimeslotCalendar from 'react-timeslot-calendar';
-import {Label, Input, FormGroup} from "reactstrap"
+import { Label, Input, FormGroup } from "reactstrap"
+import firebase from "../Config Files/firebaseConfig"
+import { firestore } from "../Config Files/firebaseConfig"
 
 class Consultation extends React.Component {
     constructor() {
@@ -19,13 +21,30 @@ class Consultation extends React.Component {
                 'sundays': false,
                 'fridays': false
             },
-            problem: "",
-            duration: ""
+            problem: "cold",
+            duration: "week",
+            timeslot: ""
         }
     }
     render() {
         const selectTimeslot = () => {
 
+        }
+        const onChange = (event) => {
+            const { name, value } = event.target
+            this.setState({ [name]: value })
+        }
+        const bookAppointment = () => {
+            const uid = localStorage.getItem("uid")
+            firestore.collection("appointment").doc(uid).set({
+                timeslot: this.state.timeslot,
+                uid: uid,
+                duration: this.state.duration,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                problem: this.state.problem
+            }).catch((err) => {
+                console.log(err.message)
+            })
         }
         return (
             <div>
@@ -52,7 +71,7 @@ class Consultation extends React.Component {
                         <div className="h3 fw-bold">BOOK APPOINTMENT</div>
                         <div className="mt-3">
                             <div className="row row-cols-xl-2 row-cols-1 g-3">
-                                <div className="col-12 col-xl-6">
+                                <div className="col-12 col-md-6">
                                     <div className="mt-3 h5">Select Date</div>
                                     <div className='calendar-container'>
                                         <ReactTimeslotCalendar
@@ -68,15 +87,15 @@ class Consultation extends React.Component {
                                         />
                                     </div>
                                 </div>
-                                <div className="col-12 col-xl-6">
+                                {/* <div className="col-12 col-xl-6">
                                     <div className="card">
                                         <div className="card-body">
                                             <p className="fw-bold h5">
-                                                <span>Selected Date:</span>{' '}
+                                                <span>Date:</span>{' '}
                                                 {this.state.date.toDateString()}
                                             </p>
                                             <div className="mb-3">
-                                                <span>Selected Time Slot:</span>{' '}
+                                                <span>Time Slot:</span>{' '}
                                                 9:00 - 10:00 AM
                                             </div>
                                             <FormGroup style={{width:"300px"}} className="mb-3">
@@ -115,6 +134,58 @@ class Consultation extends React.Component {
                                                 </Input>
                                             </FormGroup>
                                             <button className="btn btn-success">
+                                                BOOK APPOINTMENT
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div> */}
+                                <div className="col-12 col-md-6">
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <p className="fw-bold h5">
+                                                <span>Date:</span>{' '}
+                                                {this.state.date.toDateString()}
+                                            </p>
+                                            <div className="mb-3">
+                                                <span>Time Slot:</span>{' '}
+                                                9:00 - 10:00 AM
+                                            </div>
+                                            <FormGroup style={{ width: "300px" }} className="mb-3">
+                                                <Label for="exampleSelect">
+                                                    Select your problem
+                                                </Label>
+                                                <Input onChange={onChange} value={this.state.problem} id="exampleSelect" name="problem" type="select">
+                                                    <option value="cold">
+                                                        Cold, Cough
+                                                    </option>
+                                                    <option value="fever">
+                                                        Fever
+                                                    </option>
+                                                    <option value="severe">
+                                                        Severe Disease
+                                                    </option>
+                                                    <option value="critical">
+                                                        Critical Problem
+                                                    </option>
+                                                </Input>
+                                            </FormGroup>
+                                            <FormGroup style={{ width: "300px" }} className="mb-3">
+                                                <Label for="exampleSelect">
+                                                    From when are you suffering?
+                                                </Label>
+                                                <Input onChange={onChange} value={this.state.duration} id="exampleSelect" name="duration" type="select">
+                                                    <option value="week">
+                                                        Less than 1 week
+                                                    </option>
+                                                    <option value="month">
+                                                        1 week - 1 month
+                                                    </option>
+                                                    <option value="month-more">
+                                                        More than 1 month
+                                                    </option>
+                                                </Input>
+                                            </FormGroup>
+                                            <button onClick={bookAppointment} className="btn btn-success">
                                                 BOOK APPOINTMENT
                                             </button>
                                         </div>

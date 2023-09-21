@@ -118,7 +118,7 @@ class Register extends React.Component {
         }
         return (
             <div className="p-xl-5 p-3">
-                <Breadcrumb>
+                <Breadcrumb className="mt-5">
                     <BreadcrumbItem>
                         <a href="/courses">
                             REIKI COURSES
