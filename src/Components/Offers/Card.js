@@ -1,5 +1,5 @@
 import React from "react"
-import { Toast, ToastBody, ToastHeader } from "reactstrap"
+import { Button } from "reactstrap"
 
 
 class Card extends React.Component {
@@ -14,9 +14,9 @@ class Card extends React.Component {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                             </div>
                             {this.props.displayed && 
-                            <div className="btn btn-success mt-3">
+                            <Button href="/courses" className="btn btn-success mt-3">
                                 Learn More
-                            </div>}
+                            </Button>}
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,5 @@
 import React from "react"
-import HomeCarousel from "../Components/HomeCarousel"
 import OurCourses from "../Components/Courses/OurCourses"
-import { Button } from "reactstrap"
-
 class Courses extends React.Component {
     render() {
         return (

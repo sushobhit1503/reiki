@@ -1,6 +1,6 @@
 import React from "react"
 import { firestore, storage } from "../Config Files/firebaseConfig"
-import { Button, Input, Label, InputGroup, InputGroupText } from "reactstrap"
+import { Button, Input, Label, InputGroup, InputGroupText, Badge } from "reactstrap"
 import Loading from "../Components/Loading"
 import "./Profile.css"
 
@@ -85,11 +85,11 @@ class MyProfile extends React.Component {
                                 <div className="d-flex flex-wrap">
                                     <div className="m-2">
                                         <Label className="m-0">Name</Label>
-                                        <Input value={this.state.user.name} disabled={true} className="mb-2" style={{width: "max-content" }} />
+                                        <Input value={this.state.user.name} disabled={true} className="mb-2" style={{ width: "max-content" }} />
                                     </div>
                                     <div className="m-2">
                                         <Label className="m-0">Age</Label>
-                                        <Input value={this.state.user.age} disabled={true} className="mb-2" style={{width: "max-content" }} />
+                                        <Input value={this.state.user.age} disabled={true} className="mb-2" style={{ width: "max-content" }} />
                                     </div>
                                     <div className="m-2">
                                         <Label className="m-0">Phone Number</Label>
@@ -102,6 +102,29 @@ class MyProfile extends React.Component {
                                 </div>
                             </div>
                             <div className="h3 fw-bold mt-5">ENROLLED COURSES</div>
+                            <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
+                                {this.state.user?.coursesDone?.map(eachCourse => {
+                                    return (
+                                        <div className="col" key={eachCourse}>
+                                            <div className="card mb-2 h-100">
+                                                <div className="card-body">
+                                                    <div className="h4 fw-bold mb-0">{eachCourse}</div>
+                                                    <Badge color="success mb-2">Completed</Badge>
+                                                    <div>
+                                                        Attended 7 times
+                                                    </div>
+                                                    <div>
+                                                        Last attended on 27th March 2023
+                                                    </div>
+                                                    <a className="btn btn-info mt-3">
+                                                        Download Certificate
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>}
             </div>

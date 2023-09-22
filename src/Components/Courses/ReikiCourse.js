@@ -1,5 +1,4 @@
 import React from "react"
-import Footer from "../Footer"
 import { Input, Button, Modal, ModalBody, ModalHeader, InputGroup, InputGroupText } from "reactstrap"
 import DegreeCard from "./DegreeCard"
 import { auth, firestore } from "../../Config Files/firebaseConfig"
