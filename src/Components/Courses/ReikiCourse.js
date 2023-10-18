@@ -124,7 +124,7 @@ class ReikiCourse extends React.Component {
                             </div>
                         </div>
                         <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" />
-                        <div style={{ cursor: "pointer", display: "flex", justifyContent: "flex-end" }}>
+                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
                             Create an account?
                             <div onClick={() => { this.setState({ type: "SIGN UP" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
                                 Click Here
@@ -155,7 +155,7 @@ class ReikiCourse extends React.Component {
                                 </div>
                             </div>
                             <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" />
-                            <div style={{ cursor: "pointer", display: "flex", justifyContent: "flex-end" }}>
+                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
                                 Already have an account?
                                 <div onClick={() => { this.setState({ type: "LOGIN" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
                                     Click Here

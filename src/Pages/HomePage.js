@@ -4,6 +4,7 @@ import { Button } from "reactstrap"
 import WhatWeOffer from "../Components/Offers/WhatWeOffer"
 import WhyUs from "../Components/WhyUs/WhyUs"
 import FeedbackCarousel from "../Components/Feedback/FeedbackCarousel"
+import { withTranslation } from "react-i18next"
 
 
 class HomePage extends React.Component {
@@ -26,9 +27,6 @@ class HomePage extends React.Component {
                                 START LEARNING
                             </Button>
                         </div>
-                        <div className="col d-none d-md-block">
-                            IMAGE
-                        </div>
                     </div>
                 </div>
                 <WhyUs />
@@ -40,4 +38,4 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage
+export default withTranslation()(HomePage)

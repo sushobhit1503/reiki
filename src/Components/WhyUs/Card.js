@@ -1,5 +1,4 @@
 import React from "react"
-import { Toast, ToastBody, ToastHeader } from "reactstrap"
 import Sentences from "../Sentences"
 
 
@@ -10,9 +9,9 @@ class Card extends React.Component {
                 <div className="card mb-2 h-100">
                     <div className="card-body">
                         <div className="h4 mb-2 fw-bold">{this.props.head}</div>
-                        {this.props.content.props.children.map(each => {
+                        {/* {this.props.content.props.children.map(each => {
                             return <Sentences name={each} />
-                        })}
+                        })} */}
                     </div>
                 </div>
             </div>
