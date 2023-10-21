@@ -8,8 +8,8 @@ class Card extends React.Component {
         return (
             <div className="col-lg-4 p-3 my-2 rounded">
                 <Toast className="h-100">
-                    <ToastHeader className="d-flex justify-content-between">
-                        <div>
+                    <ToastHeader>
+                        <div className="text-start">
                             {this.props.head}
                         </div>
                         <div>

@@ -1,5 +1,6 @@
 import React from "react"
 import { Button } from "reactstrap"
+import { withTranslation } from "react-i18next"
 
 
 class Card extends React.Component {
@@ -7,15 +8,15 @@ class Card extends React.Component {
         return (
             <div>
                 <div className="col">
-                    <div className="card mb-2 h-100">
+                    <div className="card h-100">
                         <div className="card-body">
                             <div className="h4 mb-3 fw-bold">{this.props.head}</div>
                             <div>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                {this.props.content}
                             </div>
                             {this.props.displayed && 
                             <Button href="/courses" className="btn btn-success mt-3">
-                                Learn More
+                                {this.props.t("learn-more")}
                             </Button>}
                         </div>
                     </div>
@@ -25,4 +26,4 @@ class Card extends React.Component {
     }
 }
 
-export default Card
+export default withTranslation()(Card)

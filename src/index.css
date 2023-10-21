@@ -14,6 +14,8 @@ body {
   --tertiary-color: #75CE9F;
   --light-green: #BDD99E;
   --dark-green: #01A66F;
+  --success-color: #00B74A;
+  --failure-color: #F93154;
 }
 
 code {

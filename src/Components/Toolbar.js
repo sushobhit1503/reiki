@@ -3,8 +3,7 @@ import { Button, Input, InputGroup, InputGroupText, Navbar, NavbarBrand, NavbarT
 import { auth, firestore } from "../Config Files/firebaseConfig"
 import Logo from "../Assets/HealingLogo.png"
 import firebase from "../Config Files/firebaseConfig"
-const englishFile = require("../Translations/en.json")
-const HindiFile = require("../Translations/hin.json")
+import { withTranslation } from "react-i18next"
 
 
 class Toolbar extends React.Component {
@@ -43,7 +42,7 @@ class Toolbar extends React.Component {
         const onSubmitLogin = () => {
             this.state.result.confirm(this.state.otp).then((result) => {
                 localStorage.setItem("uid", result.user.uid)
-                this.setState({ alert: "Login Successful ! Redirecting.." })
+                this.setState({ alert: this.props.t("login-success") })
                 setTimeout(() => {
                     this.setState({ alert: "" })
                 }, 3000)
@@ -58,7 +57,7 @@ class Toolbar extends React.Component {
         }
         const sendOTP = () => {
             if (!isValidPhone) {
-                this.setState({ error: "Please enter a valid phone number" })
+                this.setState({ error: this.props.t("number-error") })
                 setTimeout(() => {
                     this.setState({ error: "" })
                 }, 3000)
@@ -72,7 +71,7 @@ class Toolbar extends React.Component {
                 })
                 let appVerifier = window.verifier
                 auth.signInWithPhoneNumber(("+91" + this.state.phoneNumber), appVerifier).then((result) => {
-                    this.setState({ result: result, alert: "OTP has been sent.", isClicked: true, phoneLock: true })
+                    this.setState({ result: result, alert: this.props.t("otp-sent"), isClicked: true, phoneLock: true })
                     setTimeout(() => {
                         this.setState({ alert: "" })
                     }, 3000)
@@ -86,7 +85,7 @@ class Toolbar extends React.Component {
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         return (
             <div>
-                <Navbar style={{zIndex: "1"}} className="w-100 position-absolute" expand="md" light>
+                <Navbar style={{ zIndex: "1" }} className="w-100 position-absolute" expand="md" light>
                     <NavbarBrand href="/">
                         <img src={Logo} alt="Logo" style={{ width: "70px" }} />
                     </NavbarBrand>
@@ -94,47 +93,23 @@ class Toolbar extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="me-auto" navbar>
                             <NavItem>
-                                <NavLink href="/about-reiki">
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.1"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.1"]}
-                                        </div>}
+                                <NavLink href="/about-reiki" className="h5 fw-normal">
+                                    {this.props.t("toolbar-option-1")}
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/courses">
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.2"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.2"]}
-                                        </div>}
+                                <NavLink href="/courses" className="h5 fw-normal">
+                                    {this.props.t("toolbar-option-2")}
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/experience">
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.3"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.3"]}
-                                        </div>}
+                                <NavLink href="/experience" className="h5 fw-normal">
+                                    {this.props.t("toolbar-option-3")}
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/consultation">
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.5"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.5"]}
-                                        </div>}
+                                <NavLink href="/consultation" className="h5 fw-normal">
+                                    {this.props.t("toolbar-option-4")}
                                 </NavLink>
                             </NavItem>
                         </Nav>
@@ -143,49 +118,25 @@ class Toolbar extends React.Component {
                                 <i style={{ fontSize: "20px", color: "var(--secondary-color)" }} className="fa-solid fa-user" ></i>
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem href="/profile">
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.6"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.6"]}
-                                        </div>}
+                                <DropdownItem className="h5 fw-normal" href="/profile">
+                                    {this.props.t("toolbar-option-7")}
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem onClick={() => { localStorage.removeItem("uid"); auth.signOut(); window.location.reload() }}>
-                                    {localStorage.getItem("lang") === "en" ?
-                                        <div>
-                                            {englishFile["Toolbar.8"]}
-                                        </div> :
-                                        <div>
-                                            {HindiFile["Toolbar.8"]}
-                                        </div>}
+                                <DropdownItem className="h5 fw-normal" onClick={() => { localStorage.removeItem("uid"); auth.signOut(); window.location.reload() }}>
+                                    {this.props.t("toolbar-option-1")}
                                 </DropdownItem>
                             </DropdownMenu>
-                        </UncontrolledDropdown> : <Button onClick={() => { this.setState({ isLogin: true }) }} color="primary" className="me-1" >
-                            {localStorage.getItem("lang") === "en" ?
-                                <div>
-                                    {englishFile["Toolbar.9"]}
-                                </div> :
-                                <div>
-                                    {HindiFile["Toolbar.9"]}
-                                </div>}
+                        </UncontrolledDropdown> : <Button className="h5 fw-normal" onClick={() => { this.setState({ isLogin: true }) }} color="primary" >
+                            {this.props.t("toolbar-option-5")}
                         </Button>}
-                        <Button color="success" onClick={() => { this.setState({ isTreat: true }) }}>
-                            {localStorage.getItem("lang") === "en" ?
-                                <div>
-                                    {englishFile["Toolbar.4"]}
-                                </div> :
-                                <div>
-                                    {HindiFile["Toolbar.4"]}
-                                </div>}
+                        <Button className="h5 fw-normal ms-3" color="success" onClick={() => { this.setState({ isTreat: true }) }}>
+                            {this.props.t("toolbar-option-6")}
                         </Button>
                     </Collapse>
                 </Navbar>
                 <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
                     <ModalHeader toggle={() => { this.setState({ isLogin: false, type: "LOGIN" }) }}>
-                        {this.state.type === "LOGIN" ? "LOGIN" : "SIGN UP"}
+                        {this.state.type === "LOGIN" ? `${this.props.t("login").toUpperCase()}` : `${this.props.t("signup").toUpperCase()}`}
                     </ModalHeader>
                     {this.state.type === "LOGIN" ? <ModalBody>
                         <div className="d-flex justify-content-between mb-3">
@@ -193,65 +144,65 @@ class Toolbar extends React.Component {
                                 <InputGroupText>
                                     +91
                                 </InputGroupText>
-                                <Input placeholder="Enter your Phone Number" onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
+                                <Input placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
                             </InputGroup>
                             { }
-                            <div id="sentOTP" onClick={sendOTP} style={{ fontWeight: "bold", cursor: "pointer", alignSelf: "center" }}>
-                                SEND OTP
+                            <div id="sentOTP" onClick={sendOTP} style={{ cursor: "pointer" }} className="fw-bold align-self-center">
+                                {this.props.t("send-otp")}
                             </div>
                         </div>
-                        {this.state.isClicked ? <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" /> : null}
-                        <div style={{display: "flex", justifyContent: "flex-end" }}>
-                            Create an account?
-                            <div onClick={() => { this.setState({ type: "SIGN UP" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
-                                Click Here
+                        {this.state.isClicked ? <Input onChange={onChange} placeholder={this.props.t("enter-otp")} name="otp" value={this.state.otp} className="mb-3" type="password" /> : null}
+                        <div className="d-flex justify-content-end">
+                            {this.props.t("create-account")}?
+                            <div onClick={() => { this.setState({ type: "SIGN UP" }) }} className="ms-2 text-decoration-underline" style={{ cursor: "pointer", color: "black" }}>
+                                {this.props.t("click-here")}
                             </div>
                         </div>
-                        <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center failure-color">
                             {this.state.error}
                         </div>
-                        <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center success-color">
                             {this.state.alert}
                         </div>
-                        <Button disabled={disabledLogin} onClick={onSubmitLogin} style={{ alignSelf: "center" }} id="login" color="success">
-                            LOGIN
+                        <Button disabled={disabledLogin} onClick={onSubmitLogin} className="align-self-center" id="login" color="success">
+                            {this.props.t("login").toUpperCase()}
                         </Button>
                     </ModalBody> :
                         <ModalBody>
-                            <Input onChange={onChange} value={this.state.name} name="name" placeholder="Enter your name" style={{ marginBottom: "10px" }} type="text" />
-                            <Input onChange={onChange} value={this.state.age} name="age" placeholder="Enter your age" style={{ marginBottom: "10px" }} type="text" />
-                            <div style={{ marginBottom: "10px", display: "flex", justifyContent: "space-between" }}>
+                            <Input onChange={onChange} value={this.state.name} name="name" placeholder={this.props.t("enter-name")} className="mb-3" type="text" />
+                            <Input onChange={onChange} value={this.state.age} name="age" placeholder={this.props.t("enter-age")} className="mb-3" type="text" />
+                            <div className="d-flex mb-3 justify-content-between">
                                 <InputGroup style={{ width: "70%" }}>
                                     <InputGroupText>
                                         +91
                                     </InputGroupText>
-                                    <Input disabled={this.state.phoneLock} placeholder="Enter your Phone Number" onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
+                                    <Input disabled={this.state.phoneLock} placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
                                 </InputGroup>
-                                <div id="sentOTP" onClick={sendOTP} style={{ fontWeight: "bold", cursor: "pointer", alignSelf: "center" }}>
-                                    SEND OTP
+                                <div id="sentOTP" onClick={sendOTP} className="fw-bold align-self-center" style={{ cursor: "pointer" }}>
+                                    {this.props.t("send-otp")}
                                 </div>
                             </div>
-                            {this.state.isClicked ? <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" /> : null}
-                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                Already have an account?
-                                <div onClick={() => { this.setState({ type: "LOGIN" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
-                                    Click Here
+                            {this.state.isClicked ? <Input onChange={onChange} placeholder={this.prop.st("enter-otp")} name="otp" value={this.state.otp} className="mb-3" type="password" /> : null}
+                            <div className="d-flex justify-content-end">
+                                {this.props.t("already-account")}?
+                                <div onClick={() => { this.setState({ type: "LOGIN" }) }} className="ms-2 text-decoration-underline" style={{ cursor: "pointer", color: "black" }}>
+                                    {this.props.t("click-here")}
                                 </div>
                             </div>
-                            <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
+                            <div className="mb-2 text-center failure-color">
                                 {this.state.error}
                             </div>
-                            <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
+                            <div className="mb-2 text-center success-color">
                                 {this.state.alert}
                             </div>
-                            <Button disabled={disabledSignup} onClick={onSubmit} style={{ alignSelf: "center" }} id="login" color="success">
-                                SIGN UP
+                            <Button disabled={disabledSignup} onClick={onSubmit} className="align-self-center" id="login" color="success">
+                                {this.props.t("signup").toUpperCase()}
                             </Button>
                         </ModalBody>}
                 </Modal>
                 <Modal isOpen={this.state.isTreat} toggle={() => { this.setState({ isTreat: !this.state.isTreat }) }}>
                     <ModalHeader toggle={() => { this.setState({ isTreat: false }) }}>
-                        GROUP TREATMENT TIMINGS
+                        {this.props.t("group-timings").toUpperCase()}
                     </ModalHeader>
                     <ModalBody>
 
@@ -263,4 +214,4 @@ class Toolbar extends React.Component {
     }
 }
 
-export default Toolbar
+export default withTranslation()(Toolbar)

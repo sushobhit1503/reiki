@@ -1,12 +1,13 @@
 import React from "react"
 import Card from "../Feedback/Card"
+import { withTranslation } from "react-i18next"
 
 class FeedbackCarousel extends React.Component {
     render() {
         return (
             <div className="mb-xl-5 mb-3 p-xl-5 p-3">
-                <div className="h3 fw-bold">
-                    WHAT OUR PATIENTS SAY?
+                <div className="h3 fw-bold mb-3">
+                    {this.props.t("patients-say").toUpperCase()}
                 </div>
                 <div id="carouselMultiItemExample" className="carousel slide carousel-dark text-center" data-mdb-ride="carousel">
                     <div className="d-flex justify-content-center mb-4">
@@ -46,4 +47,4 @@ class FeedbackCarousel extends React.Component {
     }
 }
 
-export default FeedbackCarousel
+export default withTranslation()(FeedbackCarousel)

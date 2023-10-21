@@ -14,17 +14,18 @@ class HomePage extends React.Component {
                 <div>
                     <div className="background-image pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
                         <div className="col">
-                            <div className="mt-5 h3 fw-bold mb-3">
-                                EXPERIENCE <span className="me-xl-5 me-3"></span> LEARN <span className="me-xl-5 me-3"></span> TREAT
+                            <div className="d-flex gap-3 mt-5 mb-3 pb-0 align-items-center">
+                                <div className="h3 fw-bold mb-0">{this.props.t("experience").toUpperCase()}</div>
+                                <div className="circles"></div>
+                                <div className="h3 fw-bold mb-0">{this.props.t("learn").toUpperCase()}</div>
+                                <div className="circles"></div>
+                                <div className="h3 fw-bold mb-0">{this.props.t("treat").toUpperCase()}</div>
                             </div>
-                            <div>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
+                            <div className="col-xl-8 col-12">
+                                {this.props.t("home-page-description")}
                             </div>
                             <Button href="/courses" color="success" className="mt-3" >
-                                START LEARNING
+                                {this.props.t("start-learning").toUpperCase()}
                             </Button>
                         </div>
                     </div>

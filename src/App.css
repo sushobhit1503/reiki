@@ -16,6 +16,21 @@
     color: var(--light-green);
 }
 
+.success-color {
+    color: var(--success-color);
+}
+
+.failure-color {
+    color: var(--failure-color);
+}
+
+.circles {
+    background-color: var(--black);
+    width: 10px;
+    border-radius: 50%;
+    height: 10px;
+}
+
 .profile-image {
     width: 15rem;
 }
