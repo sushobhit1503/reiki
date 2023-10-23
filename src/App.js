@@ -23,7 +23,9 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
-    localStorage.setItem("lang", "en")
+    if (!localStorage.getItem("lang")) {
+      localStorage.setItem("lang", "en")
+    }
     auth.onAuthStateChanged((user) => {
       if (user) {
         localStorage.setItem("uid", user.uid)

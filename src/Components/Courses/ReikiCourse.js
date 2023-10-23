@@ -20,7 +20,8 @@ class ReikiCourse extends React.Component {
             age: "",
             result: null,
             phoneLock: false,
-            user: {}
+            user: {},
+            isClicked: false
         }
     }
     componentDidMount() {
@@ -99,7 +100,7 @@ class ReikiCourse extends React.Component {
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         const disabledLogin = !(this.state.phoneNumber && this.state.otp)
         return (
-            <div className="mb-xl-5 mb-3 p-xl-5 p-3">
+            <div className="mb-xl-5 mb-3 p-xl-5 p-3 pt-5">
                 <div className="h3 fw-bold mt-5">
                     {this.props.t("all-degrees").toUpperCase()}
                 </div>

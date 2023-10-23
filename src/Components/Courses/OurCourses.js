@@ -18,7 +18,8 @@ class OurCourses extends React.Component {
             age: "",
             result: null,
             phoneLock: false,
-            user: {}
+            user: {},
+            isClicked: false
         }
     }
     render() {
@@ -118,7 +119,7 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{first_degree.cost} {this.props.t("onwards")}
                                     </div>
-                                    <a onClick={checkUser} className="btn btn-success mt-3">
+                                    <a href="#" onClick={checkUser} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>
                                 </div>
@@ -143,7 +144,7 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{dowser.cost}
                                     </div>
-                                    <a onClick={checkUserOther} className="btn btn-success mt-3">
+                                    <a href="#" onClick={checkUserOther} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>
                                 </div>

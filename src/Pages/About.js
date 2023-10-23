@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../Components/Offers/Card"
+// import Card from "../Components/Offers/Card"
 import { Button } from "reactstrap";
 import { withTranslation } from "react-i18next";
 
@@ -13,7 +13,7 @@ class About extends React.Component {
                             <div className="mt-5 h3 fw-bold mb-3">
                                 {this.props.t("what-reiki").toUpperCase()}
                             </div>
-                            <div>
+                            <div className="col-xl-8 col-12">
                                 {this.props.t("what-reiki-description")}
                             </div>
                             <Button href="/courses" color="success" className="mt-3" >

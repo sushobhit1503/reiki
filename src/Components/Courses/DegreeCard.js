@@ -40,6 +40,7 @@ class DegreeCard extends React.Component {
                             <i className="bi bi-currency-rupee"></i>{this.props.cost}
                         </div>
                         <div className="my-3">
+                            {console.log(this.props.t("first-degree-description[0]"))}
                             {this.props.description}
                         </div>
                         <div>
@@ -49,7 +50,7 @@ class DegreeCard extends React.Component {
                                 </a>
                             </Button> :
                                 <Button disabled={true} onClick={onSubmit} color="dark">
-                                    <a className="text-decoration-none white">
+                                    <a href="#" className="text-decoration-none white">
                                         {this.props.t("not-eligible").toUpperCase()}
                                     </a>
                                 </Button>}

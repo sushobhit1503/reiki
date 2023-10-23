@@ -1,8 +1,9 @@
 import React from "react"
 import { firestore, storage } from "../Config Files/firebaseConfig"
-import { Button, Input, Label, InputGroup, InputGroupText, Badge } from "reactstrap"
+import { Button, Input, Label, InputGroup, InputGroupText, Badge, FormGroup } from "reactstrap"
 import Loading from "../Components/Loading"
 import "./Profile.css"
+import i18n from "../Config Files/i18n"
 import { withTranslation } from "react-i18next"
 
 class MyProfile extends React.Component {
@@ -14,10 +15,12 @@ class MyProfile extends React.Component {
             error: "",
             profilePicture: null,
             isLoading: false,
-            uploadedPicture: ""
+            uploadedPicture: "",
+            language: ""
         }
     }
     componentDidMount() {
+        console.log(i18n.language)
         this.setState({ isLoading: true })
         const idNo = localStorage.getItem("uid")
         firestore.collection("users").doc(idNo).get().then((document) => {
@@ -32,6 +35,14 @@ class MyProfile extends React.Component {
     render() {
         const fileChange = (event) => {
             this.setState({ profilePicture: event.target.files[0] })
+        }
+        const onChange = (e) => {
+            const {name, value} = e.target
+            this.setState ({[name]: value}, () => {
+                i18n.changeLanguage (this.state.language)
+                console.log(this.state.language, i18n.language)
+                localStorage.setItem("lang", this.state.language)
+            })
         }
         const storePicture = () => {
             this.setState({ isLoading: true })
@@ -87,16 +98,16 @@ class MyProfile extends React.Component {
                                     <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px" }} className="mt-2" type="file" />
                                     <Button disabled={disabled} onClick={storePicture} type="file" color="success" className="mt-2" style={{ width: "200px" }}>{this.props.t("upload-photo").toUpperCase()}</Button>
                                 </div>
-                                <div className="d-flex flex-wrap">
-                                    <div className="m-2">
+                                <div className="d-flex flex-wrap gap-3">
+                                    <div>
                                         <Label className="m-0">{this.props.t("name")}</Label>
-                                        <Input value={this.state.user.name} disabled={true} className="mb-2"/>
+                                        <Input value={this.state.user.name} disabled={true} className="mb-2" />
                                     </div>
-                                    <div className="m-2">
+                                    <div>
                                         <Label className="m-0">{this.props.t("age")}</Label>
                                         <Input value={this.state.user.age} disabled={true} className="mb-2" />
                                     </div>
-                                    <div className="m-2">
+                                    <div>
                                         <Label className="m-0">{this.props.t("phone-number")}</Label>
                                         <InputGroup>
                                             <InputGroupText>
@@ -104,6 +115,19 @@ class MyProfile extends React.Component {
                                             </InputGroupText>
                                         </InputGroup>
                                     </div>
+                                    <FormGroup>
+                                        <Label for="exampleSelect" className="mb-0">
+                                            {this.props.t("select-language")}
+                                        </Label>
+                                        <Input onChange={onChange} value={this.state.language} id="exampleSelect" name="language" type="select">
+                                            <option value="en">
+                                                {this.props.t("english")}
+                                            </option>
+                                            <option value="hin">
+                                                {this.props.t("hindi")}
+                                            </option>
+                                        </Input>
+                                    </FormGroup>
                                 </div>
                             </div>
                             <div className="h3 fw-bold mt-5">{this.props.t("enrolled-courses")}</div>
@@ -122,7 +146,7 @@ class MyProfile extends React.Component {
                                                     <div>
                                                         {this.props.t("last-attended")}: 27th March 2023
                                                     </div>
-                                                    <a className="btn btn-info mt-3 align-items-center">
+                                                    <a href="#" className="btn btn-info mt-3 align-items-center">
                                                         <i className="bi bi-download me-2"></i>
                                                         {this.props.t("download-certificate")}
                                                     </a>
