@@ -1,17 +1,18 @@
 import React from "react"
 import RingLoader from "react-spinners/RingLoader";
+import { withTranslation } from "react-i18next";
 
 class Loading extends React.Component {
     render() {
         return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="d-flex justify-content-center align-items-center">
                 <div>
                     <RingLoader color="green" loading={true} size={100} />
-                    Please Wait...
+                    {this.props.t("please-wait")}
                 </div>
             </div>
         )
     }
 }
 
-export default Loading
+export default withTranslation() (Loading)

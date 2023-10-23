@@ -123,7 +123,7 @@ class Toolbar extends React.Component {
                                 </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem className="h5 fw-normal" onClick={() => { localStorage.removeItem("uid"); auth.signOut(); window.location.reload() }}>
-                                    {this.props.t("toolbar-option-1")}
+                                    {this.props.t("toolbar-option-8")}
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown> : <Button className="h5 fw-normal" onClick={() => { this.setState({ isLogin: true }) }} color="primary" >

@@ -4,6 +4,7 @@ import DegreeCard from "./DegreeCard"
 import { auth, firestore } from "../../Config Files/firebaseConfig"
 import firebase from "../../Config Files/firebaseConfig"
 import { first_degree, second_degree, master_degree, third_degree } from "../../Config Files/consts"
+import { withTranslation } from "react-i18next"
 
 
 class ReikiCourse extends React.Component {
@@ -39,7 +40,7 @@ class ReikiCourse extends React.Component {
         }
     }
     render() {
-        const onSubmitSignup = () => {
+        const onSubmit = () => {
             this.state.result.confirm(this.state.otp).then((result) => {
                 firestore.collection("users").doc(result.user.uid).set({
                     id: result.user.uid,
@@ -57,7 +58,7 @@ class ReikiCourse extends React.Component {
         const onSubmitLogin = () => {
             this.state.result.confirm(this.state.otp).then((result) => {
                 localStorage.setItem("uid", result.user.uid)
-                this.setState({ alert: "Login Successful ! Redirecting.." })
+                this.setState({ alert: this.props.t("login-success") })
                 setTimeout(() => {
                     this.setState({ alert: "" })
                 }, 3000)
@@ -72,7 +73,7 @@ class ReikiCourse extends React.Component {
         }
         const sendOTP = () => {
             if (!isValidPhone) {
-                this.setState({ error: "Please enter a valid phone number" })
+                this.setState({ error: this.props.t("number-error") })
                 setTimeout(() => {
                     this.setState({ error: "" })
                 }, 3000)
@@ -85,7 +86,7 @@ class ReikiCourse extends React.Component {
                 })
                 let appVerifier = window.verifier
                 auth.signInWithPhoneNumber(("+91" + this.state.phoneNumber), appVerifier).then((result) => {
-                    this.setState({ result: result, alert: "OTP has been sent.", phoneLock: true })
+                    this.setState({ result: result, alert: this.props.t("otp-sent"), phoneLock: true })
                     setTimeout(() => {
                         this.setState({ alert: "" })
                     }, 3000)
@@ -96,10 +97,11 @@ class ReikiCourse extends React.Component {
         }
         const isValidPhone = /\d{10}/.test(this.state.phoneNumber)
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
+        const disabledLogin = !(this.state.phoneNumber && this.state.otp)
         return (
             <div className="mb-xl-5 mb-3 p-xl-5 p-3">
                 <div className="h3 fw-bold mt-5">
-                    ALL DEGREES FOR REIKI COURSE
+                    {this.props.t("all-degrees").toUpperCase()}
                 </div>
                 <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
                     <DegreeCard id={first_degree.id} key={first_degree.id} degree={first_degree.name} cost={first_degree.cost} />
@@ -109,66 +111,67 @@ class ReikiCourse extends React.Component {
                 </div>
                 <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
                     <ModalHeader toggle={() => { this.setState({ isLogin: false, type: "LOGIN" }) }}>
-                        {this.state.type === "LOGIN" ? "LOGIN" : "SIGN UP"}
+                        {this.state.type === "LOGIN" ? `${this.props.t("login").toUpperCase()}` : `${this.props.t("signup").toUpperCase()}`}
                     </ModalHeader>
                     {this.state.type === "LOGIN" ? <ModalBody>
-                        <div style={{ marginBottom: "10px", display: "flex", justifyContent: "space-between" }}>
-                            <InputGroup style={{ width: "70%" }}>
+                        <div className="d-flex justify-content-between mb-3">
+                            <InputGroup className="w-75">
                                 <InputGroupText>
                                     +91
                                 </InputGroupText>
-                                <Input placeholder="Enter your Phone Number" onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
+                                <Input placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
                             </InputGroup>
-                            <div onClick={sendOTP} style={{ fontWeight: "bold", cursor: "pointer", alignSelf: "center" }}>
-                                SEND OTP
+                            { }
+                            <div id="sentOTP" onClick={sendOTP} style={{ cursor: "pointer" }} className="fw-bold align-self-center">
+                                {this.props.t("send-otp")}
                             </div>
                         </div>
-                        <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" />
-                        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                            Create an account?
-                            <div onClick={() => { this.setState({ type: "SIGN UP" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
-                                Click Here
+                        {this.state.isClicked ? <Input onChange={onChange} placeholder={this.props.t("enter-otp")} name="otp" value={this.state.otp} className="mb-3" type="password" /> : null}
+                        <div className="d-flex justify-content-end">
+                            {this.props.t("create-account")}?
+                            <div onClick={() => { this.setState({ type: "SIGN UP" }) }} className="ms-2 text-decoration-underline" style={{ cursor: "pointer", color: "black" }}>
+                                {this.props.t("click-here")}
                             </div>
                         </div>
-                        <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center failure-color">
                             {this.state.error}
                         </div>
-                        <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center success-color">
                             {this.state.alert}
                         </div>
-                        <Button onClick={onSubmitLogin} style={{ alignSelf: "center" }} id="login" color="success">
-                            LOGIN
+                        <Button disabled={disabledLogin} onClick={onSubmitLogin} className="align-self-center" id="login" color="success">
+                            {this.props.t("login").toUpperCase()}
                         </Button>
                     </ModalBody> :
                         <ModalBody>
-                            <Input onChange={onChange} value={this.state.name} name="name" placeholder="Enter your name" style={{ marginBottom: "10px" }} type="text" />
-                            <Input onChange={onChange} value={this.state.age} name="age" placeholder="Enter your age" style={{ marginBottom: "10px" }} type="text" />
-                            <div style={{ marginBottom: "10px", display: "flex", justifyContent: "space-between" }}>
+                            <Input onChange={onChange} value={this.state.name} name="name" placeholder={this.props.t("enter-name")} className="mb-3" type="text" />
+                            <Input onChange={onChange} value={this.state.age} name="age" placeholder={this.props.t("enter-age")} className="mb-3" type="text" />
+                            <div className="d-flex mb-3 justify-content-between">
                                 <InputGroup style={{ width: "70%" }}>
                                     <InputGroupText>
                                         +91
                                     </InputGroupText>
-                                    <Input disabled={this.state.phoneLock} placeholder="Enter your Phone Number" onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
+                                    <Input disabled={this.state.phoneLock} placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
                                 </InputGroup>
-                                <div onClick={sendOTP} style={{ fontWeight: "bold", cursor: "pointer", alignSelf: "center" }}>
-                                    SEND OTP
+                                <div id="sentOTP" onClick={sendOTP} className="fw-bold align-self-center" style={{ cursor: "pointer" }}>
+                                    {this.props.t("send-otp")}
                                 </div>
                             </div>
-                            <Input onChange={onChange} placeholder="Enter the OTP" name="otp" value={this.state.otp} style={{ marginBottom: "10px" }} type="password" />
-                            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                                Already have an account?
-                                <div onClick={() => { this.setState({ type: "LOGIN" }) }} style={{ cursor: "pointer", marginLeft: "5px", color: "black", textDecoration: "underline" }}>
-                                    Click Here
+                            {this.state.isClicked ? <Input onChange={onChange} placeholder={this.prop.st("enter-otp")} name="otp" value={this.state.otp} className="mb-3" type="password" /> : null}
+                            <div className="d-flex justify-content-end">
+                                {this.props.t("already-account")}?
+                                <div onClick={() => { this.setState({ type: "LOGIN" }) }} className="ms-2 text-decoration-underline" style={{ cursor: "pointer", color: "black" }}>
+                                    {this.props.t("click-here")}
                                 </div>
                             </div>
-                            <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
+                            <div className="mb-2 text-center failure-color">
                                 {this.state.error}
                             </div>
-                            <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
+                            <div className="mb-2 text-center success-color">
                                 {this.state.alert}
                             </div>
-                            <Button disabled={disabledSignup} onClick={onSubmitSignup} style={{ alignSelf: "center" }} id="login" color="success">
-                                SIGN UP
+                            <Button disabled={disabledSignup} onClick={onSubmit} className="align-self-center" id="login" color="success">
+                                {this.props.t("signup").toUpperCase()}
                             </Button>
                         </ModalBody>}
                 </Modal>
@@ -177,4 +180,4 @@ class ReikiCourse extends React.Component {
     }
 }
 
-export default ReikiCourse
+export default withTranslation()(ReikiCourse)

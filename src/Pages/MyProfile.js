@@ -3,6 +3,7 @@ import { firestore, storage } from "../Config Files/firebaseConfig"
 import { Button, Input, Label, InputGroup, InputGroupText, Badge } from "reactstrap"
 import Loading from "../Components/Loading"
 import "./Profile.css"
+import { withTranslation } from "react-i18next"
 
 class MyProfile extends React.Component {
     constructor() {
@@ -43,7 +44,7 @@ class MyProfile extends React.Component {
                         firestore.collection("users").doc(user).update({
                             uploadedPicture: this.state.uploadedPicture
                         }).then(() => {
-                            this.setState({ isLoading: false, alert: "Image has been uploaded" })
+                            this.setState({ isLoading: false, alert: this.props.t("image-success") })
                             setTimeout(() => {
                                 this.setState({ alert: "" })
                             }, 3000)
@@ -65,34 +66,38 @@ class MyProfile extends React.Component {
         const disabled = !(this.state.profilePicture)
         return (
             <div>
-                {this.state.isLoading ? <Loading /> :
+                {this.state.isLoading ?
+                    <div className="pt-5 vh-100 d-flex justify-content-center align-items-center">
+                        <Loading />
+                    </div>
+                    :
                     <div className="pt-5">
-                        <div style={{ fontSize: "15px", color: "#F93154", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center failure-color">
                             {this.state.error}
                         </div>
-                        <div style={{ fontSize: "15px", color: "#00B74A", marginBottom: "10px", textAlign: "center" }}>
+                        <div className="mb-2 text-center success-color">
                             {this.state.alert}
                         </div>
                         <div className="p-xl-5 p-3">
-                            <div className="h3 fw-bold mt-3">MY PROFILE</div>
-                            <div className="d-flex flex-md-row flex-column m-3 ms-0 gap-3">
+                            <div className="h3 fw-bold mt-3">{this.props.t("my-profile").toUpperCase()}</div>
+                            <div className="d-flex flex-md-row flex-column m-3 ms-0 gap-5">
                                 <div className="d-flex flex-column justify-content-center">
-                                    {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", heigh: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
+                                    {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", height: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
                                         : <i className="fa fa-user-circle" style={{ fontSize: "200px", color: "grey" }}></i>}
-                                    <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px", marginTop: "10px" }} type="file" />
-                                    <Button disabled={disabled} onClick={storePicture} type="file" color="success" style={{ marginTop: "10px", width: "200px" }}> UPLOAD PHOTO</Button>
+                                    <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px" }} className="mt-2" type="file" />
+                                    <Button disabled={disabled} onClick={storePicture} type="file" color="success" className="mt-2" style={{ width: "200px" }}>{this.props.t("upload-photo").toUpperCase()}</Button>
                                 </div>
                                 <div className="d-flex flex-wrap">
                                     <div className="m-2">
-                                        <Label className="m-0">Name</Label>
-                                        <Input value={this.state.user.name} disabled={true} className="mb-2" style={{ width: "max-content" }} />
+                                        <Label className="m-0">{this.props.t("name")}</Label>
+                                        <Input value={this.state.user.name} disabled={true} className="mb-2"/>
                                     </div>
                                     <div className="m-2">
-                                        <Label className="m-0">Age</Label>
-                                        <Input value={this.state.user.age} disabled={true} className="mb-2" style={{ width: "max-content" }} />
+                                        <Label className="m-0">{this.props.t("age")}</Label>
+                                        <Input value={this.state.user.age} disabled={true} className="mb-2" />
                                     </div>
                                     <div className="m-2">
-                                        <Label className="m-0">Phone Number</Label>
+                                        <Label className="m-0">{this.props.t("phone-number")}</Label>
                                         <InputGroup>
                                             <InputGroupText>
                                                 +91 {this.state.user.phoneNumber}
@@ -101,23 +106,25 @@ class MyProfile extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="h3 fw-bold mt-5">ENROLLED COURSES</div>
+                            <div className="h3 fw-bold mt-5">{this.props.t("enrolled-courses")}</div>
                             <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
                                 {this.state.user?.coursesDone?.map(eachCourse => {
                                     return (
                                         <div className="col" key={eachCourse}>
                                             <div className="card mb-2 h-100">
-                                                <div className="card-body">
+                                                <div className="card-body gap-3">
                                                     <div className="h4 fw-bold mb-0">{eachCourse}</div>
-                                                    <Badge color="success mb-2">Completed</Badge>
+                                                    <Badge color="success mb-2">{this.props.t("completed")}</Badge>
+                                                    <Badge color="warning mb-2">{this.props.t("pending")}</Badge>
                                                     <div>
-                                                        Attended 7 times
+                                                        7 {this.props.t("attendance-count")}
                                                     </div>
                                                     <div>
-                                                        Last attended on 27th March 2023
+                                                        {this.props.t("last-attended")}: 27th March 2023
                                                     </div>
-                                                    <a className="btn btn-info mt-3">
-                                                        Download Certificate
+                                                    <a className="btn btn-info mt-3 align-items-center">
+                                                        <i className="bi bi-download me-2"></i>
+                                                        {this.props.t("download-certificate")}
                                                     </a>
                                                 </div>
                                             </div>
@@ -132,4 +139,4 @@ class MyProfile extends React.Component {
     }
 }
 
-export default MyProfile
+export default withTranslation()(MyProfile)

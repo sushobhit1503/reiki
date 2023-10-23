@@ -1,7 +1,7 @@
 import React from "react"
-import { Breadcrumb, BreadcrumbItem, Button, Toast } from "reactstrap"
-import Footer from "../Components/Footer"
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap"
 import { firestore } from "../Config Files/firebaseConfig"
+import { withTranslation } from "react-i18next"
 
 class Register extends React.Component {
     constructor() {
@@ -15,8 +15,8 @@ class Register extends React.Component {
             completed: false,
             date: new Date(),
             name: "",
-            sessionDate: "",
-            sessionTime: "",
+            sessionDate: "NA",
+            sessionTime: "NA",
             phoneNumber: "",
             age: "",
             result: null,
@@ -87,8 +87,8 @@ class Register extends React.Component {
                     key: "rzp_test_w8rvyxPQeuC7Bt",
                     currency: "INR",
                     amount: this.state.amount * 100,
-                    name: "REIKINAME",
-                    description: `Payment for the course ${localStorage.getItem("degree")}`,
+                    name: "REIKI HEALING CENTRE",
+                    description: `${this.props.t("payment-course")} ${this.props.t(localStorage.getItem("degree"))}`,
                     image: "",
                     handler: function async(response) {
                         console.log(window.user);
@@ -108,7 +108,6 @@ class Register extends React.Component {
                     },
                     prefill: {
                         name: this.state.user.name,
-                        email: "sushobhitsrivastava2017@gmail.com",
                         contact: this.state.user.phoneNumber,
                     },
                 }
@@ -121,23 +120,23 @@ class Register extends React.Component {
                 <Breadcrumb className="mt-5">
                     <BreadcrumbItem>
                         <a href="/courses">
-                            REIKI COURSES
+                            {this.props.t("reiki-courses").toUpperCase()}
                         </a>
                     </BreadcrumbItem>
                     <BreadcrumbItem>
                         <a href="/courses/reiki">
-                            {localStorage.getItem("degree")}
+                            {this.props.t(localStorage.getItem("degree")).toUpperCase()}
                         </a>
                     </BreadcrumbItem>
                     <BreadcrumbItem active>
-                        REGISTER
+                        {this.props.t("register-breadcrumb").toUpperCase()}
                     </BreadcrumbItem>
                 </Breadcrumb>
                 <div className="row row-cols-xl-3 row-cols-1 my-3 g-3">
-                    <div className="col-xl-4 col-12">
+                    {/* <div className="col-xl-4 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
-                                <div className="h3 mb-2 fw-bold">THE GUIDELINES</div>
+                                <div className="h3 mb-2 fw-bold">{this.props.t("guidelines")}</div>
                                 <ul>
                                     <li>Lorem Ipsum</li>
                                     <li>Lorem Ipsum</li>
@@ -151,33 +150,35 @@ class Register extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-xl-4 col-12">
+                    </div> */}
+                    <div className="col-xl-6 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
-                                <div className="h3 mb-2 fw-bold">NEXT SESSION</div>
+                                <div className="h3 mb-2 fw-bold">{this.props.t("next-session").toUpperCase()}</div>
 
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-12">
+                    <div className="col-xl-6 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
                                 <div className="d-flex">
-                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>DATE :</div>
+                                    <div className="me-2 fw-bold fs-5">{this.props.t("date").toUpperCase()}:</div>
                                     <div className="align-self-center">
-                                        {this.state.sessionDate === "NA" ? "Date to be announced" : `${this.state.sessionDate}`}
+                                        {this.state.sessionDate === "NA" ? `${this.props.t("date-announce")}` : `${this.state.sessionDate}`}
                                     </div>
                                 </div>
                                 <div className="d-flex">
-                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>TIME :</div>
+                                    <div className="me-2 fw-bold fs-5">{this.props.t("time").toUpperCase()}:</div>
                                     <div className="align-self-center">
-                                        {this.state.sessionTime === "NA" ? "Timings to be announced" : `${this.state.sessionTime}`}
+                                        {this.state.sessionTime === "NA" ? `${this.props.t("time-announce")}` : `${this.state.sessionTime}`}
                                     </div>
                                 </div>
                                 <div className="d-flex">
-                                    <div className="me-2" style={{ fontSize: "23px", fontWeight: "600" }}>LINK :</div>
-                                    <div className="align-self-center">Will be shared after you have paid.</div>
+                                    <div className="me-2 fw-bold fs-5">{this.props.t("link").toUpperCase()} :</div>
+                                    <div className="align-self-center">{!this.state.completed ? <div>
+                                        <a href="htttps://www.google.com" target="_blank">MEETING LINK</a>
+                                    </div>: `${this.props.t("shared-soon")}`}</div>
                                 </div>
                             </div>
                         </div>
@@ -185,13 +186,13 @@ class Register extends React.Component {
                 </div>
                 <div className="d-flex justify-content-center">
                     <div className="align-self-center me-3" style={{ fontWeight: "700" }}>
-                        Rs. {this.state.amount}
+                        <i className="bi bi-currency-rupee"></i>{this.state.amount}
                     </div>
                     {this.state.completed ? <Button onClick={onSubmit} color="success">
                         <i class="fa-solid fa-coins me-2"></i>
-                        PAY NOW
+                       {this.props.t("pay-now")}
                     </Button> : <Button disabled={true} color="dark">
-                        ALREADY PAID
+                        {this.props.t("already-paid")}
                     </Button>}
 
                 </div>
@@ -200,4 +201,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register
+export default withTranslation()(Register)

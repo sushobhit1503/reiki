@@ -4,6 +4,7 @@ import ReactTimeslotCalendar from 'react-timeslot-calendar';
 import { Label, Input, FormGroup } from "reactstrap"
 import firebase from "../Config Files/firebaseConfig"
 import { firestore } from "../Config Files/firebaseConfig"
+import { withTranslation } from "react-i18next";
 
 class Consultation extends React.Component {
     constructor() {
@@ -52,27 +53,21 @@ class Consultation extends React.Component {
                     <div className="background-image pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
                         <div className="col">
                             <div className="mt-5 h3 fw-bold mb-3">
-                                LEARN REIKI
+                                {this.props.t("consultation-heading").toUpperCase()}
                             </div>
                             <div>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat.
+                                {this.props.t("consultation-description")}
                             </div>
-                        </div>
-                        <div className="col d-none d-md-block">
-                            IMAGE
                         </div>
                     </div>
                 </div>
                 <div className="d-xl-flex mb-xl-5 mb-3">
                     <div className="col-12 p-xl-5 p-3">
-                        <div className="h3 fw-bold">BOOK APPOINTMENT</div>
+                        <div className="h3 fw-bold">{this.props.t("appointment").toUpperCase()}</div>
                         <div className="mt-3">
                             <div className="row row-cols-xl-2 row-cols-1 g-3">
                                 <div className="col-12 col-md-6">
-                                    <div className="mt-3 h5">Select Date</div>
+                                    <div className="mt-3 h5">{this.props.t("select-date")}</div>
                                     <div className='calendar-container'>
                                         <ReactTimeslotCalendar
                                             initialDate={moment().format()}
@@ -143,50 +138,50 @@ class Consultation extends React.Component {
                                     <div className="card">
                                         <div className="card-body">
                                             <p className="fw-bold h5">
-                                                <span>Date:</span>{' '}
+                                                <span>{this.props.t("date")}:</span>{' '}
                                                 {this.state.date.toDateString()}
                                             </p>
                                             <div className="mb-3">
-                                                <span>Time Slot:</span>{' '}
+                                                <span>{this.props.t("time-slot")}:</span>{' '}
                                                 9:00 - 10:00 AM
                                             </div>
                                             <FormGroup style={{ width: "300px" }} className="mb-3">
                                                 <Label for="exampleSelect">
-                                                    Select your problem
+                                                    {this.props.t("problem-select")}
                                                 </Label>
                                                 <Input onChange={onChange} value={this.state.problem} id="exampleSelect" name="problem" type="select">
                                                     <option value="cold">
-                                                        Cold, Cough
+                                                        {this.props.t("cold")}
                                                     </option>
                                                     <option value="fever">
-                                                        Fever
+                                                        {this.props.t("fever")}
                                                     </option>
                                                     <option value="severe">
-                                                        Severe Disease
+                                                        {this.props.t("long-disease")}
                                                     </option>
                                                     <option value="critical">
-                                                        Critical Problem
+                                                        {this.props.t("critical")}
                                                     </option>
                                                 </Input>
                                             </FormGroup>
                                             <FormGroup style={{ width: "300px" }} className="mb-3">
                                                 <Label for="exampleSelect">
-                                                    From when are you suffering?
+                                                    {this.props.t("suffering-when")}
                                                 </Label>
                                                 <Input onChange={onChange} value={this.state.duration} id="exampleSelect" name="duration" type="select">
                                                     <option value="week">
-                                                        Less than 1 week
+                                                        {this.props.t("less-week")}
                                                     </option>
                                                     <option value="month">
-                                                        1 week - 1 month
+                                                        {this.props.t("one-month")}
                                                     </option>
                                                     <option value="month-more">
-                                                        More than 1 month
+                                                        {this.props.t("more-month")}
                                                     </option>
                                                 </Input>
                                             </FormGroup>
                                             <button onClick={bookAppointment} className="btn btn-success">
-                                                BOOK APPOINTMENT
+                                                {this.props.t("appointment").toUpperCase()}
                                             </button>
                                         </div>
                                     </div>
@@ -200,4 +195,4 @@ class Consultation extends React.Component {
     }
 }
 
-export default Consultation
+export default withTranslation()(Consultation)
