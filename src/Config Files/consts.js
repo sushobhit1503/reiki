@@ -15,7 +15,13 @@ export const third_degree = {
 }
 export const master_degree = {
     name: "master-degree",
-    cost: 11000,
+    cost: 15000,
+    id: 4
+}
+
+export const grand_master_degree = {
+    name: "grand-master-degree",
+    cost: 15000,
     id: 4
 }
 

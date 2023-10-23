@@ -15,4 +15,4 @@ class Loading extends React.Component {
     }
 }
 
-export default withTranslation() (Loading)
+export default withTranslation()(Loading)

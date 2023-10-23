@@ -1,8 +1,6 @@
 import React from "react"
 import Photo from "../Assets/Photo.jpg"
 import { withTranslation } from "react-i18next"
-const englishFile = require("../Translations/en.json")
-const HindiFile = require("../Translations/hin.json")
 
 
 

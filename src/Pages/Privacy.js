@@ -3,7 +3,7 @@ import React from "react"
 class Privacy extends React.Component {
     render() {
         return (
-            <div style={{ padding: "100px 20px 50px 60px" }}>
+            <div className="pt-5 p-xl-5 p-3">
                 <h1><b>PRIVACY POLICY</b></h1>
                 <p>Effective date: 2022-07-01</p>
                 <h3>1. Introduction</h3>

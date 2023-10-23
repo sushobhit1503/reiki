@@ -3,7 +3,7 @@ import React from "react"
 class Terms extends React.Component {
     render() {
         return (
-            <div style={{ padding: "100px 20px 50px 60px" }}>
+            <div className="pt-5 p-xl-5 p-3">
                 <h1>Terms and Conditions</h1>
                 Welcome to The Healing Centre! <br />
                 These terms and conditions outline the rules and regulations for the use of The Healing Centre's Website, located at https://www.reiki-healing-centre.com. <br /><br />

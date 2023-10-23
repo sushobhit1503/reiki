@@ -130,7 +130,7 @@ class OurCourses extends React.Component {
                                     <div className="h4 mb-2 fw-bold">{this.props.t("dowser").toUpperCase()}</div>
                                     <div className="d-flex gap-2">
                                         <i className="bi bi-people-fill light-green-o"></i>
-                                        <div>2 people completed this course</div>
+                                        <div>2 {this.props.t("people-completed")}</div>
                                     </div>
                                     {/* <div className="d-flex gap-2">
                                         <i className="bi bi-stopwatch-fill light-green-o"></i>
@@ -144,7 +144,7 @@ class OurCourses extends React.Component {
                                         <i className="bi bi-currency-rupee"></i>{dowser.cost}
                                     </div>
                                     <a onClick={checkUserOther} className="btn btn-success mt-3">
-                                        Enrol Now
+                                        {this.props.t("enrol")}
                                     </a>
                                 </div>
                             </div>

@@ -143,7 +143,7 @@ class Consultation extends React.Component {
                                             </p>
                                             <div className="mb-3">
                                                 <span>{this.props.t("time-slot")}:</span>{' '}
-                                                9:00 - 10:00 AM
+                                                {this.state.timeslot}
                                             </div>
                                             <FormGroup style={{ width: "300px" }} className="mb-3">
                                                 <Label for="exampleSelect">

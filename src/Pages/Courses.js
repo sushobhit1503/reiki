@@ -1,6 +1,6 @@
 import React from "react"
 import OurCourses from "../Components/Courses/OurCourses"
-import { WithTranslation, withTranslation } from "react-i18next"
+import { withTranslation } from "react-i18next"
 
 class Courses extends React.Component {
     render() {
