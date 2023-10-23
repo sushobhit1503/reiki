@@ -4,6 +4,7 @@ import { auth, firestore } from "../Config Files/firebaseConfig"
 import Logo from "../Assets/HealingLogo.png"
 import firebase from "../Config Files/firebaseConfig"
 import { withTranslation } from "react-i18next"
+import { Navigate } from "react-router-dom"
 
 
 class Toolbar extends React.Component {
@@ -20,8 +21,20 @@ class Toolbar extends React.Component {
             phoneNumber: "",
             age: "",
             result: null,
-            phoneLock: false
+            phoneLock: false,
+            user: {}
         }
+    }
+    componentDidMount () {
+        const idNo = localStorage.getItem("uid")
+        firestore.collection("users").doc(idNo).get().then((document) => {
+            this.setState({ user: document.data() })
+        }).catch(() => {
+            this.setState({ error: "Some error occurred. Please try again" })
+            setTimeout(() => {
+                this.setState({ error: "" })
+            }, 3000)
+        })
     }
     render() {
         const onSubmit = () => {
@@ -83,53 +96,54 @@ class Toolbar extends React.Component {
         const isValidPhone = /\d{10}/.test(this.state.phoneNumber)
         const disabledLogin = !(this.state.phoneNumber && this.state.otp)
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
+        const urlLink = window.location.href.split("/")[3]
         return (
             <div>
-                <Navbar style={{ zIndex: "1" }} className="w-100 position-absolute" expand="md" light>
+                <Navbar style={{ zIndex: "1" }} className={`w-100 position-absolute ${this.state.isOpen && 'bg-light'}`} expand="md" light>
                     <NavbarBrand href="/">
                         <img src={Logo} alt="Logo" style={{ width: "70px" }} />
                     </NavbarBrand>
                     <NavbarToggler className="me-3" onClick={() => { this.setState({ isOpen: !this.state.isOpen }) }} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="me-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/about-reiki" className="h5 fw-normal">
+                            <NavItem style={{width: "max-content"}}>
+                                <NavLink href="/about-reiki" className={`h5 fw-normal mb-0 ${urlLink === "about-reiki" && "active-link"}`}>
                                     {this.props.t("toolbar-option-1")}
                                 </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink href="/courses" className="h5 fw-normal">
+                            <NavItem style={{width: "max-content"}}>
+                                <NavLink href="/courses" className={`h5 fw-normal mb-0 ${urlLink === "courses" && "active-link"}`}>
                                     {this.props.t("toolbar-option-2")}
                                 </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink href="/experience" className="h5 fw-normal">
+                            <NavItem style={{width: "max-content"}}>
+                                <NavLink href="/experience" className={`h5 fw-normal mb-0 ${urlLink === "experience" && "active-link"}`}>
                                     {this.props.t("toolbar-option-3")}
                                 </NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink href="/consultation" className="h5 fw-normal">
+                            <NavItem style={{width: "max-content"}}>
+                                <NavLink href="/consultation" className={`h5 fw-normal mb-0 ${urlLink === "consultation" && "active-link"}`}>
                                     {this.props.t("toolbar-option-4")}
                                 </NavLink>
                             </NavItem>
                         </Nav>
                         {localStorage.getItem("uid") ? <UncontrolledDropdown inNavbar>
-                            <DropdownToggle style={{ color: "green" }} caret nav>
-                                <i style={{ fontSize: "20px", color: "var(--secondary-color)" }} className="fa-solid fa-user" ></i>
+                            <DropdownToggle style={{width: "max-content"}} className="btn-primary rounded white gap-2 d-flex align-items-center" caret nav>
+                                <i className="fa-solid fa-user" ></i> {this.state.user.name?.split(" ")[0]}
                             </DropdownToggle>
                             <DropdownMenu end>
-                                <DropdownItem className="h5 fw-normal" href="/profile">
+                                <DropdownItem className="h5 mb-0 fw-normal" href="/profile">
                                     {this.props.t("toolbar-option-7")}
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem className="h5 fw-normal" onClick={() => { localStorage.removeItem("uid"); auth.signOut(); window.location.reload() }}>
+                                <DropdownItem className="h5 mb-0 fw-normal" onClick={() => { localStorage.removeItem("uid"); auth.signOut(); }}>
                                     {this.props.t("toolbar-option-8")}
                                 </DropdownItem>
                             </DropdownMenu>
-                        </UncontrolledDropdown> : <Button className="h5 fw-normal" onClick={() => { this.setState({ isLogin: true }) }} color="primary" >
+                        </UncontrolledDropdown> : <Button className="h5 mb-0 fw-normal" onClick={() => { this.setState({ isLogin: true }) }} color="primary" >
                             {this.props.t("toolbar-option-5")}
                         </Button>}
-                        <Button className="h5 fw-normal ms-3" color="success" onClick={() => { this.setState({ isTreat: true }) }}>
+                        <Button className="h5 fw-normal ms-md-3 mt-2 mt-md-0 mb-0" color="success" onClick={() => { this.setState({ isTreat: true }) }}>
                             {this.props.t("toolbar-option-6")}
                         </Button>
                     </Collapse>

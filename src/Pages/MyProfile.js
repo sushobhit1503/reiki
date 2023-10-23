@@ -20,7 +20,6 @@ class MyProfile extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(i18n.language)
         this.setState({ isLoading: true })
         const idNo = localStorage.getItem("uid")
         firestore.collection("users").doc(idNo).get().then((document) => {
