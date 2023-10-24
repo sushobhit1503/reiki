@@ -27,14 +27,16 @@ class Toolbar extends React.Component {
     }
     componentDidMount () {
         const idNo = localStorage.getItem("uid")
-        firestore.collection("users").doc(idNo).get().then((document) => {
-            this.setState({ user: document.data() })
-        }).catch(() => {
-            this.setState({ error: "Some error occurred. Please try again" })
-            setTimeout(() => {
-                this.setState({ error: "" })
-            }, 3000)
-        })
+        if (idNo) {
+            firestore.collection("users").doc(idNo).get().then((document) => {
+                this.setState({ user: document.data() })
+            }).catch(() => {
+                this.setState({ error: "Some error occurred. Please try again" })
+                setTimeout(() => {
+                    this.setState({ error: "" })
+                }, 3000)
+            })
+        }
     }
     render() {
         const onSubmit = () => {
