@@ -40,8 +40,8 @@ class App extends React.Component {
         <Toolbar />
         <Routes>
           <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/reiki" element={<PrivateRoute><ReikiCourse /></PrivateRoute>} />
-          <Route path="/register" element={<PrivateRoute><Register /></PrivateRoute>} />
+          <Route path="/courses/reiki" element={<ReikiCourse />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<MyProfile />} />
           <Route path="/about-reiki" element={<About />} />
           <Route path="/experience" element={<Experience />} />

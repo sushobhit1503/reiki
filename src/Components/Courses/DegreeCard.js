@@ -40,7 +40,6 @@ class DegreeCard extends React.Component {
                             <i className="bi bi-currency-rupee"></i>{this.props.cost}
                         </div>
                         <div className="my-3">
-                            {console.log(this.props.t("first-degree-description[0]"))}
                             {this.props.description}
                         </div>
                         <div>

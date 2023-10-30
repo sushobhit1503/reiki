@@ -81,20 +81,7 @@ class OurCourses extends React.Component {
         const isValidPhone = /\d{10}/.test(this.state.phoneNumber)
         const disabledSignup = !(this.state.age && this.state.otp && this.state.name && this.state.phoneNumber)
         const disabledLogin = !(this.state.phoneNumber && this.state.otp)
-        const checkUser = () => {
-            const uid = localStorage.getItem("uid")
-            if (uid)
-                return <Navigate to="/courses/reiki" />
-            else
-                this.setState({ isLogin: true })
-        }
-        const checkUserOther = () => {
-            const uid = localStorage.getItem("uid")
-            if (uid)
-                return <Navigate to="/register" />
-            else
-                this.setState({ isLogin: true })
-        }
+        const uid = localStorage.getItem("uid")
         return (
             <div>
                 <div className="p-xl-5 p-3">
@@ -119,9 +106,12 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{first_degree.cost} {this.props.t("onwards")}
                                     </div>
-                                    <a href="#" onClick={checkUser} className="btn btn-success mt-3">
+                                    {!uid && <a href="" onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
-                                    </a>
+                                    </a>}
+                                    {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
+                                        {this.props.t("enrol")}
+                                    </a>}
                                 </div>
                             </div>
                         </div>
@@ -144,9 +134,12 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{dowser.cost}
                                     </div>
-                                    <a href="#" onClick={checkUserOther} className="btn btn-success mt-3">
+                                    {!uid && <a href="" onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
-                                    </a>
+                                    </a>}
+                                    {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
+                                        {this.props.t("enrol")}
+                                    </a>}
                                 </div>
                             </div>
                         </div>
