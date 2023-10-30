@@ -1,5 +1,5 @@
 import React from "react";
-// import Card from "../Components/Offers/Card"
+import Card from "../Components/Offers/Card"
 import { Button } from "reactstrap";
 import { withTranslation } from "react-i18next";
 
@@ -27,16 +27,16 @@ class About extends React.Component {
                         {this.props.t("advantages").toUpperCase()}
                     </div>
                     <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
-                        {/* <Card displayed={false} key="1" head={"Free from any medicine"} 
-                        content={"No medicines are required. This reduces your expenses"} />
-                        <Card displayed={false} key="2" head={"Free from any medicine"} content={""} />
-                        <Card displayed={false} key="2" head={"Free from any medicine"} content={""} /> */}
+                        <Card displayed={false} key="1" head={this.props.t("advantages-cures-anything")} 
+                        content={this.props.t("advantages-cures-anything-description")} />
+                        <Card displayed={false} key="2" head={this.props.t("advantages-relaxation")} content={this.props.t("advantages-relaxation-description")} />
+                        <Card displayed={false} key="2" head={this.props.t("advantages-improvement")} content={this.props.t("advantages-improvement-description")} />
                     </div>
                 </div>
                 <div className="p-xl-5 p-3">
-                    <div className="h3 fw-bold mb-3">
+                    {/* <div className="h3 fw-bold mb-3">
                         {this.props.t("reiki-types").toUpperCase()}
-                    </div>
+                    </div> */}
                     <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
                         {/* <Card displayed={false} key="1" head={"Distant Reiki"} 
                         content={"No medicines are required. This reduces your expenses"} />
@@ -45,9 +45,9 @@ class About extends React.Component {
                     </div>
                 </div>
                 <div className="p-xl-5 p-3">
-                    <div className="h3 fw-bold mb-3">
+                    {/* <div className="h3 fw-bold mb-3">
                         {this.props.t("stories").toUpperCase()}
-                    </div>
+                    </div> */}
                     <div className="row row-cols-md-2 row-cols-xl-3 row-cols-1 g-3">
                         {/* <Card displayed={false} key="1" head={"Story 1"} 
                         content={"No medicines are required. This reduces your expenses"} />

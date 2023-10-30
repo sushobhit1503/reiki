@@ -17,7 +17,7 @@ class DegreeCard extends React.Component {
         firestore.collection("users").doc(user).get().then(document => {
             const degree = document.data().currentDegree
             if (degree < this.props.id) {
-                this.setState ({button: false})
+                this.setState({ button: false })
             }
         }).catch((err) => {
             console.log(err.message)
@@ -40,7 +40,13 @@ class DegreeCard extends React.Component {
                             <i className="bi bi-currency-rupee"></i>{this.props.cost}
                         </div>
                         <div className="my-3">
-                            {this.props.description}
+                            {["1", "2", "3", "4"].map(eachNumber => {
+                                return (
+                                    <div key={eachNumber} className="mb-2">
+                                        {this.props.t(`${this.props.degree}-${eachNumber}`)}
+                                    </div>
+                                )
+                            })}
                         </div>
                         <div>
                             {this.state.button ? <Button onClick={onSubmit} color="success">

@@ -22,6 +22,7 @@ class MyProfile extends React.Component {
     componentDidMount() {
         this.setState({ isLoading: true })
         const idNo = localStorage.getItem("uid")
+        this.setState ({language: localStorage.getItem("lang")})
         firestore.collection("users").doc(idNo).get().then((document) => {
             this.setState({ user: document.data(), uploadedPicture: document.data().uploadedPicture, isLoading: false })
         }).catch(() => {

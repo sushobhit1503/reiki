@@ -177,7 +177,7 @@ class Register extends React.Component {
                                 <div className="d-flex">
                                     <div className="me-2 fw-bold fs-5">{this.props.t("link").toUpperCase()} :</div>
                                     <div className="align-self-center">{!this.state.completed ? <div>
-                                        <a href="htttps://www.google.com" target="_blank" rel="noreferrer">MEETING LINK</a>
+                                        <a href="htttps://www.google.com" target="_blank" rel="noreferrer">{this.props.t("meeting-link")}</a>
                                     </div>: `${this.props.t("shared-soon")}`}</div>
                                 </div>
                             </div>

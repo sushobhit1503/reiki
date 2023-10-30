@@ -137,7 +137,7 @@ class OurCourses extends React.Component {
                                     {!uid && <a href="" onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>}
-                                    {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
+                                    {uid && <a href="/register" className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>}
                                 </div>
