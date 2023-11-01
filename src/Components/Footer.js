@@ -26,11 +26,22 @@ class Footer extends React.Component {
                         </div>
                         <div className="col-6">
                             <div className="h4">{this.props.t("contact")}</div>
-                            <div>
-                                <a>{this.props.t("locations")}</a>
+                            // <div>
+                            //     <a>{this.props.t("locations")}</a>
+                            // </div>
+                            // <div>
+                            //     <a>{this.props.t("culture")}</a>
+                            // </div>
+                            <div className="d-flex justify-content-between mb-3">
+                                <div className="fw-bold">{this.props.t("email-address-heading")}</div>
+                                <div>{this.props.t("email-address")}</div>
+                            </div>
+                            <div className="d-flex justify-content-between mb-5">
+                                <div className="fw-bold">{this.props.t("contact-number-heading")}</div>
+                                <div>{this.props.t("contact-number")}</div>
                             </div>
                             <div>
-                                <a>{this.props.t("culture")}</a>
+                                <a href="/feedback">{this.props.t("feedback")}</a>
                             </div>
                         </div>
                     </div>
