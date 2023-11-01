@@ -5,27 +5,27 @@ class Terms extends React.Component {
         return (
             <div className="pt-5 p-xl-5 p-3">
                 <h1>Terms and Conditions</h1>
-                Welcome to The Healing Centre! <br />
-                These terms and conditions outline the rules and regulations for the use of The Healing Centre's Website, located at https://www.reiki-healing-centre.com. <br /><br />
-                By accessing this website we assume you accept these terms and conditions. Do not continue to use The Healing Centre if you do not agree to take all of the terms and conditions stated on this page.
+                Welcome to Reiki Healing Centre! <br />
+                These terms and conditions outline the rules and regulations for the use of Reiki Healing Centre's Website, located at https://www.reiki-healing-centre.com. <br /><br />
+                By accessing this website we assume you accept these terms and conditions. Do not continue to use Reiki Healing Centre if you do not agree to take all of the terms and conditions stated on this page.
                 <br /> <br />
                 The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Centre’s terms and conditions. "The Centre", "Ourselves", "We", "Our" and "Us", refers to our centre. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Centre’s stated services, in accordance with and subject to, prevailing law of India. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
                 <br /><br />
                 <h3>Local Storage</h3>
-                We employ the use of local storage. By accessing The Healing Centre, you agreed to use cookies in agreement with the The Healing Centre's Privacy Policy.
+                We employ the use of local storage. By accessing Reiki Healing Centre, you agreed to use cookies in agreement with the Reiki Healing Centre's Privacy Policy.
                 Local Storage are used by our website to enable the functionality of certain areas to make it easier for people visiting our website.
                 <br /> <br />
                 <h3>License</h3>
-                Unless otherwise stated, The Healing Centre and/or its licensors own the intellectual property rights for all material on The Healing Centre. All intellectual property rights are reserved. You may access this from The Healing Centre for your own personal use subjected to restrictions set in these terms and conditions. <br />
+                Unless otherwise stated, Reiki Healing Centre and/or its licensors own the intellectual property rights for all material on Reiki Healing Centre. All intellectual property rights are reserved. You may access this from Reiki Healing Centre for your own personal use subjected to restrictions set in these terms and conditions. <br />
                 You must not:
                 <br />
                 <ul>
-                    <li>Republish material from The Healing Centre</li>
-                    <li>Sell, rent or sub-license material from The Healing Centre</li>
-                    <li>Reproduce, duplicate or copy material from The Healing Centre</li>
-                    <li>Redistribute content from The Healing Centre</li>
+                    <li>Republish material from Reiki Healing Centre</li>
+                    <li>Sell, rent or sub-license material from Reiki Healing Centre</li>
+                    <li>Reproduce, duplicate or copy material from Reiki Healing Centre</li>
+                    <li>Redistribute content from Reiki Healing Centre</li>
                 </ul>
-                This Agreement shall begin on the date 1st July 2022. <br /><br />
+                This Agreement shall begin on the date 1st November 2023. <br /><br />
                 <h3>Hyperlinking to our Content</h3>
                 The following organizations may link to our Website without prior written approval: <br />
                 <ul>
@@ -56,7 +56,7 @@ class Terms extends React.Component {
                 <ol type="a">
                     <li>the link would not make us look unfavorably to ourselves or to our accredited healing centre.</li>
                     <li>the organization does not have any negative records with us</li>
-                    <li>the benefit to us from the visibility of the hyperlink compensates the absence of The Healing Centre and</li>
+                    <li>the benefit to us from the visibility of the hyperlink compensates the absence of Reiki Healing Centre and</li>
                     <li>the link is in the context of general resource information.</li>
                 </ol>
                 These organizations may link to our home page so long as the link: <br />
@@ -65,7 +65,7 @@ class Terms extends React.Component {
                 <br />(c) fits within the context of the linking party’s site. <br />
                 <br />
 
-                If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to reiki.healing.centre.jyoti@gmail.com <br />
+                If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to helpdesk@reiki-healing-centre.com <br />
                 Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 1-2 weeks for a response.
                 Approved organizations may hyperlink to our Website as follows:
                 <br />
@@ -74,7 +74,7 @@ class Terms extends React.Component {
                     <li>By use of the uniform resource locator being linked to</li>
                     <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
                 </ul>
-                No use of The Healing Centre's logo or other artwork will be allowed for linking absent a trademark license agreement. <br /><br />
+                No use of Reiki Healing Centre's logo or other artwork will be allowed for linking absent a trademark license agreement. <br /><br />
                 <h3>iFrames</h3>
                 Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.
                 <br /><br />
