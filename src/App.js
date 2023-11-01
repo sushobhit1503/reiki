@@ -14,6 +14,7 @@ import Privacy from './Pages/Privacy';
 import Terms from './Pages/Terms';
 import About from './Pages/About';
 import Consultation from './Pages/Consultation';
+import Feedback from './Pages/Feedback';
 import PrivateRoute from './Components/PrivateRoute';
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ class App extends React.Component {
           <Route path="/profile" element={<MyProfile />} />
           <Route path="/about-reiki" element={<About />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route exact path="/" element={<HomePage />} />

@@ -17,6 +17,7 @@ class Register extends React.Component {
             name: "",
             sessionDate: "NA",
             sessionTime: "NA",
+            link: "",
             phoneNumber: "",
             age: "",
             result: null,
@@ -29,9 +30,17 @@ class Register extends React.Component {
         const cost = localStorage.getItem("cost")
         const degree = localStorage.getItem("degree")
         this.setState({ amount: cost })
+        firestore.collection("slots").where("name", "==", degree).get().then(result => {
+            result.forEach (eachDoc => {
+                const {startTime, link, endTime, completed, date} = eachDoc.data()
+                if (!completed) {
+                    this.setState ({sessionDate: `${startTime} - ${endTime}`, sessionTime: date, link: link})
+                }
+            })
+        })
         firestore.collection("users").doc(uid).get().then((document) => {
             window.user = document.data()
-            this.setState({ user: document.data() }, () => { console.log(this.state.user) })
+            this.setState({ user: document.data() })
             firestore.collection(localStorage.getItem("degree")).doc(uid).get().then(document => {
                 if (document.data().paid)
                     this.setState({ completed: true })
@@ -133,32 +142,22 @@ class Register extends React.Component {
                     </BreadcrumbItem>
                 </Breadcrumb>
                 <div className="row row-cols-xl-3 row-cols-1 my-3 g-3">
-                    {/* <div className="col-xl-4 col-12">
+                    <div className="col-xl-6 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
                                 <div className="h3 mb-2 fw-bold">{this.props.t("guidelines")}</div>
-                                <ul>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                    <li>Lorem Ipsum</li>
-                                </ul>
+                                
                             </div>
                         </div>
-                    </div> */}
-                    <div className="col-xl-6 col-12">
+                    </div>
+                    {/* <div className="col-xl-6 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
                                 <div className="h3 mb-2 fw-bold">{this.props.t("next-session").toUpperCase()}</div>
 
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-xl-6 col-12">
                         <div className="card mb-2 h-100">
                             <div className="card-body">
@@ -177,7 +176,7 @@ class Register extends React.Component {
                                 <div className="d-flex">
                                     <div className="me-2 fw-bold fs-5">{this.props.t("link").toUpperCase()} :</div>
                                     <div className="align-self-center">{!this.state.completed ? <div>
-                                        <a href="htttps://www.google.com" target="_blank" rel="noreferrer">{this.props.t("meeting-link")}</a>
+                                        <a href={this.state.link} target="_blank" rel="noreferrer">{this.props.t("meeting-link")}</a>
                                     </div>: `${this.props.t("shared-soon")}`}</div>
                                 </div>
                             </div>

@@ -32,6 +32,9 @@ class Footer extends React.Component {
                             <div>
                                 <a>{this.props.t("culture")}</a>
                             </div>
+                            <div>
+                                <a className="" href="/feedback">{this.props.t("feedback")}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
