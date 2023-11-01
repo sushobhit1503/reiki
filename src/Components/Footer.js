@@ -18,10 +18,10 @@ class Footer extends React.Component {
                         <div className="col-6">
                             <div className="h4">{this.props.t("legal")}</div>
                             <div>
-                                <a>{this.props.t("privacy")}</a>
+                                <a href="/privacy">{this.props.t("privacy")}</a>
                             </div>
                             <div>
-                                <a>{this.props.t("terms")}</a>
+                                <a href="/terms">{this.props.t("terms")}</a>
                             </div>
                         </div>
                         <div className="col-6">
