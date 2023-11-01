@@ -4,7 +4,7 @@ class Privacy extends React.Component {
     render() {
         return (
             <div className="pt-5 p-xl-5 p-3">
-                <h1><b>PRIVACY POLICY</b></h1>
+                <h1 className="mt-5 mb-3"><b>PRIVACY POLICY</b></h1>
                 <p>Effective date: 2023-10-01</p>
                 <h3>1. Introduction</h3>
                 Welcome to <b> Reiki Healing Centre</b>. <br />

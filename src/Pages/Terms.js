@@ -4,7 +4,7 @@ class Terms extends React.Component {
     render() {
         return (
             <div className="pt-5 p-xl-5 p-3">
-                <h1>Terms and Conditions</h1>
+                <h1 className="mt-5 mb-3">Terms and Conditions</h1>
                 Welcome to Reiki Healing Centre! <br />
                 These terms and conditions outline the rules and regulations for the use of Reiki Healing Centre's Website, located at https://www.reiki-healing-centre.com. <br /><br />
                 By accessing this website we assume you accept these terms and conditions. Do not continue to use Reiki Healing Centre if you do not agree to take all of the terms and conditions stated on this page.

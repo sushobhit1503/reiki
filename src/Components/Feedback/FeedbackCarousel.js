@@ -1,8 +1,26 @@
 import React from "react"
 import Card from "../Feedback/Card"
 import { withTranslation } from "react-i18next"
+import { firestore } from "../../Config Files/firebaseConfig"
 
 class FeedbackCarousel extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            allFeedbacks: []
+        }
+    }
+    componentDidMount() {
+        firestore.collection("feedbacks").where("toDisplay", "==", true).get().then(Snapshot => {
+            let temp = []
+            Snapshot.forEach(doc => {
+                temp.push(doc.data())
+            })
+            this.setState({ allFeedbacks: temp })
+        }).catch(err => {
+            console.log(err.message);
+        })
+    }
     render() {
         return (
             <div className="mb-xl-5 mb-3 p-xl-5 p-3">
@@ -26,17 +44,17 @@ class FeedbackCarousel extends React.Component {
                         <div className="carousel-item active">
                             <div className="container">
                                 <div className="row">
-                                    <Card rating={5} head="Saurabh Chandra" content="I have seen such rare miracles of Reiki that are beyond imagination." />
-                                    <Card rating={5} head="Sugandha Srivastava" content="Miraculous. I am severe asthmatic patient, whenever my condition became critical it was the miracle of Reiki that gave me relief." />
-                                    <Card rating={5} head="Rakhi" content="Very nice experience. Cure was very fast." />
+                                    {this.state.allFeedbacks.map((eachKey, index) => {
+                                        return (
+                                            <Card key={eachKey} rating={this.state.allFeedbacks[index].rating} head={this.state.allFeedbacks[index].name} content={this.state.allFeedbacks[index].feedback} />
+                                        )
+                                    })}
                                 </div>
                             </div>
                         </div>
                         <div className="carousel-item">
                             <div className="container">
                                 <div className="row">
-                                    <Card rating={5} head="Sonal Tatia" content="Excellent, she is very good teacher. Reiki se hame bohot benefit hua." />
-                                    <Card rating={5} head="Princy Palshetkar" content="Bahot achha laga reiki sikhke aunty se.. Bahot positive feel hota hai aunty ki awaz sunkar hi.. Reiki sikhne ke related jo bhi materials diye woh bahut helpful hai.." />
                                 </div>
                             </div>
                         </div>

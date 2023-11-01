@@ -26,6 +26,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.2",
+    "react-star-ratings": "^2.3.0",
     "react-timeslot-calendar": "^0.2.0",
     "reactstrap": "^9.1.1",
     "simple-react-footer": "^1.0.2",
