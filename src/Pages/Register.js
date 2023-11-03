@@ -13,6 +13,7 @@ class Register extends React.Component {
             type: "LOGIN",
             otp: "",
             completed: false,
+            paid: false,
             date: new Date(),
             name: "",
             sessionDate: "NA",
@@ -41,9 +42,9 @@ class Register extends React.Component {
         firestore.collection("users").doc(uid).get().then((document) => {
             window.user = document.data()
             this.setState({ user: document.data() })
-            firestore.collection(localStorage.getItem("degree")).doc(uid).get().then(document => {
+            firestore.collection(this.props.t(localStorage.getItem("degree")).toUpperCase()).doc(uid).get().then(document => {
                 if (document.data().paid)
-                    this.setState({ completed: true })
+                    this.setState({ paid: true })
                 firestore.collection("slots").where("name", "==", degree).where("completed", "==", false).get().then(Snapshot => {
                     if (Snapshot.empty) {
                         this.setState({ sessionDate: "NA", sessionTime: "NA" })
@@ -175,7 +176,7 @@ class Register extends React.Component {
                                 </div>
                                 <div className="d-flex">
                                     <div className="me-2 fw-bold fs-5">{this.props.t("link").toUpperCase()} :</div>
-                                    <div className="align-self-center">{!this.state.completed ? <div>
+                                    <div className="align-self-center">{this.state.paid ? <div>
                                         <a href={this.state.link} target="_blank" rel="noreferrer">{this.props.t("meeting-link")}</a>
                                     </div>: `${this.props.t("shared-soon")}`}</div>
                                 </div>
@@ -187,8 +188,8 @@ class Register extends React.Component {
                     <div className="align-self-center me-3" style={{ fontWeight: "700" }}>
                         <i className="bi bi-currency-rupee"></i>{this.state.amount}
                     </div>
-                    {this.state.completed ? <Button onClick={onSubmit} color="success">
-                        <i class="fa-solid fa-coins me-2"></i>
+                    {!this.state.paid ? <Button onClick={onSubmit} color="success">
+                        <i className="fa-solid fa-coins me-2"></i>
                        {this.props.t("pay-now")}
                     </Button> : <Button disabled={true} color="dark">
                         {this.props.t("already-paid")}

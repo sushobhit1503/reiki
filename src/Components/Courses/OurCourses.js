@@ -106,7 +106,7 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{first_degree.cost} {this.props.t("onwards")}
                                     </div>
-                                    {!uid && <a href="" onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
+                                    {!uid && <a onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>}
                                     {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
@@ -134,7 +134,7 @@ class OurCourses extends React.Component {
                                     <div className="mt-3 h5">
                                         <i className="bi bi-currency-rupee"></i>{dowser.cost}
                                     </div>
-                                    {!uid && <a href="" onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
+                                    {!uid && <a onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
                                         {this.props.t("enrol")}
                                     </a>}
                                     {uid && <a href="/register" className="btn btn-success mt-3">
