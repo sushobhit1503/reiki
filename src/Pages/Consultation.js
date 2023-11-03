@@ -1,30 +1,21 @@
 import React from "react"
-import moment from 'moment';
-import ReactTimeslotCalendar from 'react-timeslot-calendar';
+import { DateSlotPicker } from "react-dateslot-picker";
+import "react-dateslot-picker/dist/style.css"
 import { Label, Input, FormGroup, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText, Button } from "reactstrap"
 import firebase from "../Config Files/firebaseConfig"
 import { firestore, auth } from "../Config Files/firebaseConfig"
 import { withTranslation } from "react-i18next";
+import Moment from "react-moment";
 
 class Consultation extends React.Component {
     constructor() {
         super()
         this.state = {
-            date: new Date(),
-            timeslots: [
-                ['9']
-            ],
-            disabledTimeslots: [
-                ['9']
-            ],
-            days: {
-                'saturdays': false,
-                'sundays': false,
-                'fridays': false
-            },
             problem: "cold",
             duration: "week",
             timeslot: "",
+            allTimeslots: [{ startTime: [13, 30], endTime: [23, 0] }],
+            allDates: ["1-5"],
             isLogin: false,
             type: "LOGIN",
             otp: "",
@@ -37,10 +28,26 @@ class Consultation extends React.Component {
             isClicked: false
         }
     }
+    componentDidMount() {
+        firestore.collection("appointmentSlots").get().then(Snapshot => {
+            let tempTimeslots = []
+            let dateSlots = []
+            Snapshot.forEach(document => {
+                const { date } = document.data()
+                if (!dateSlots.includes(date.split("-")[2])) {
+                    dateSlots.push(parseInt(date.split("-")[2]))
+                }
+            })
+            for (let index = 1; index <= 31; index++) {
+                if (!dateSlots.includes(index)) {
+                    dateSlots.push(index)
+                    console.log(dateSlots)
+                }
+            }
+            this.setState({ allTimeslots: tempTimeslots, allDates: dateSlots }, () => console.log(this.state.allDates))
+        }).catch(err => console.log(err.message))
+    }
     render() {
-        const selectTimeslot = () => {
-
-        }
         const onSubmit = () => {
             this.state.result.confirm(this.state.otp).then((result) => {
                 firestore.collection("users").doc(result.user.uid).set({
@@ -102,25 +109,31 @@ class Consultation extends React.Component {
         const bookAppointment = () => {
             const uid = localStorage.getItem("uid")
             if (uid) {
-                firestore.collection("appointment").doc(uid).set({
-                    timeslot: this.state.timeslot,
-                    uid: uid,
-                    duration: this.state.duration,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    problem: this.state.problem
-                }).catch((err) => {
-                    console.log(err.message)
-                })
+                firestore.collection("users").doc(uid).get().then(result => {
+                    firestore.collection("appointment").doc().set({
+                        timeslot: this.state.timeslot,
+                        uid: uid,
+                        duration: this.state.duration,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        problem: this.state.problem,
+                        name: result.data().name
+                    }).then(() => {
+                        window.location.reload()
+                    }).catch((err) => {
+                        console.log(err.message)
+                    })
+                }).catch(err => console.log(err.message))
             }
             else {
                 this.setState({ isLogin: true })
             }
         }
+        const disabled = !this.state.timeslot
         return (
             <div>
                 <div>
-                    <div className="background-image pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
-                        <div className="col">
+                    <div className="background-image-consultation pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
+                        <div className="col align-self-center">
                             <div className="mt-5 h3 fw-bold mb-3">
                                 {this.props.t("consultation-heading").toUpperCase()}
                             </div>
@@ -136,20 +149,12 @@ class Consultation extends React.Component {
                         <div className="mt-3">
                             <div className="row row-cols-xl-2 row-cols-1 g-3">
                                 <div className="col-12 col-md-6">
-                                    <div className="mt-3 h5">{this.props.t("select-date")}</div>
-                                    <div className='calendar-container'>
-                                        <ReactTimeslotCalendar
-                                            initialDate={moment().format()}
-                                            timeslots={this.state.timeslots}
-                                            disabledTimeslots={this.state.disabledTimeslots}
-                                            onSelectTimeslot={selectTimeslot}
-                                            renderDays={{
-                                                'saturday': false,
-                                                'sunday': false,
-                                                'friday': false
-                                            }}
-                                        />
-                                    </div>
+                                    {/* <div className="mt-3 h5">{this.props.t("select-date")}</div> */}
+                                    <DateSlotPicker
+                                        dailyTimePair={this.state.allTimeslots}
+                                        disableSpecific={this.state.allDates}
+                                        onSelectDatetime={(timestamp) => { this.setState({ timeslot: new Date(timestamp) }) }}
+                                    />
                                 </div>
                                 {/* <div className="col-12 col-xl-6">
                                     <div className="card">
@@ -206,14 +211,20 @@ class Consultation extends React.Component {
                                 <div className="col-12 col-md-6">
                                     <div className="card">
                                         <div className="card-body">
-                                            <p className="fw-bold h5">
-                                                <span>{this.props.t("date")}:</span>{' '}
-                                                {this.state.date.toDateString()}
-                                            </p>
-                                            <div className="mb-3">
-                                                <span>{this.props.t("time-slot")}:</span>{' '}
-                                                {this.state.timeslot}
-                                            </div>
+                                            {this.state.timeslot ? <div>
+                                                <div className="fw-bold h5">
+                                                    <span>{this.props.t("date")}:</span>{' '}
+                                                    <Moment format="DD/MM/YYYY">
+                                                        {this.state.timeslot}
+                                                    </Moment>
+                                                </div>
+                                                <div className="mb-3">
+                                                    <span>{this.props.t("time-slot")}:</span>{' '}
+                                                    <Moment format="hh:mm a">
+                                                        {this.state.timeslot}
+                                                    </Moment>
+                                                </div>
+                                            </div> : <div className="fw-bold" style={{ color: "var(--failure-color)" }}>Please select date</div>}
                                             <FormGroup style={{ width: "300px" }} className="mb-3">
                                                 <Label for="exampleSelect">
                                                     {this.props.t("problem-select")}
@@ -249,7 +260,7 @@ class Consultation extends React.Component {
                                                     </option>
                                                 </Input>
                                             </FormGroup>
-                                            <button onClick={bookAppointment} className="btn btn-success">
+                                            <button disabled={disabled} onClick={bookAppointment} className="btn btn-success">
                                                 {this.props.t("appointment").toUpperCase()}
                                             </button>
                                         </div>

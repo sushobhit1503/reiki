@@ -18,10 +18,10 @@ class Footer extends React.Component {
                         <div className="col-6">
                             <div className="h4">{this.props.t("legal")}</div>
                             <div>
-                                <a href="/privacy">{this.props.t("privacy")}</a>
+                                <a className="bg-primary-o text-decoration-none" href="/privacy">{this.props.t("privacy")}</a>
                             </div>
                             <div>
-                                <a href="/terms">{this.props.t("terms")}</a>
+                                <a className="bg-primary-o text-decoration-none" href="/terms">{this.props.t("terms")}</a>
                             </div>
                         </div>
                         <div className="col-6">
@@ -37,7 +37,7 @@ class Footer extends React.Component {
                             <div className="fw-bold">{this.props.t("contact-number-heading")}</div>
                             <div className="mb-3">{this.props.t("contact-number")}</div>
                             <div>
-                                <a href="/feedback">{this.props.t("feedback")}</a>
+                                <a className="bg-primary-o text-decoration-none" href="/feedback">{this.props.t("feedback")}</a>
                             </div>
                         </div>
                     </div>

@@ -12,8 +12,8 @@ class HomePage extends React.Component {
         return (
             <div>
                 <div>
-                    <div className="background-image pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
-                        <div className="col">
+                    <div className="background-image-home pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
+                        <div className="col align-self-center">
                             <div className="d-flex gap-3 mt-5 mb-3 pb-0 align-items-center">
                                 <div className="h3 fw-bold mb-0">{this.props.t("experience").toUpperCase()}</div>
                                 <div className="circles"></div>
@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                 <WhyUs />
                 <WhatWeOffer />
                 <AboutMe />
-                <FeedbackCarousel />
+                {/* <FeedbackCarousel /> */}
             </div>
         )
     }

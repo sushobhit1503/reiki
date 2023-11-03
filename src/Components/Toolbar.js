@@ -101,7 +101,7 @@ class Toolbar extends React.Component {
         const urlLink = window.location.href.split("/")[3]
         return (
             <div>
-                <Navbar style={{ zIndex: "1" }} className={`w-100 position-absolute ${this.state.isOpen && 'bg-light'}`} expand="md" light>
+                <Navbar style={{ zIndex: "100" }} className={`w-100 position-absolute ${this.state.isOpen && 'bg-light'}`} expand="md" light>
                     <NavbarBrand href="/">
                         <img src={Logo} alt="Logo" style={{ width: "70px" }} />
                     </NavbarBrand>

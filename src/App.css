@@ -40,11 +40,41 @@
     color: var(--white);
 }
 
-.background-image {
-    background-image: url("./Assets/background.png");
+
+.background-image-home {
+    background-image: url("./Assets/background-home.gif");
+    min-height: 600px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
+}
+
+.background-image-about {
+    background-image: url("./Assets/background-about.gif");
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.background-image-courses {
+    background-image: url("./Assets/background-courses.png");
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.background-image-consultation {
+    background-image: url("./Assets/background-consultation.png");
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* PROGRESS BAR */
@@ -88,5 +118,45 @@
         background-color: #f1f1f1;
         border: 1px solid #ccc;
         border-radius: 5px;
+    }
+    .background-image-home {
+        background-image: url("./Assets/background-home-mob.gif");
+        min-height: 500px;
+        background-repeat: no-repeat;
+        background-position:right;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .background-image-about {
+        background-image: url("./Assets/background-about-mob.gif");
+        min-height: 500px;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .background-image-courses {
+        background-image: url("./Assets/background-courses-mob.png");
+        min-height: 500px;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .background-image-experience {
+        background-image: url("./Assets/background-experience-mob.png");
+        min-height: 500px;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .background-image-consultation {
+        background-image: url("./Assets/background-consultation-mob.png");
+        min-height: 500px;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: cover;
+        background-attachment: fixed;
     }
 }
