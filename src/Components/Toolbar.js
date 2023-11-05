@@ -150,7 +150,7 @@ class Toolbar extends React.Component {
                         </Button>
                     </Collapse>
                 </Navbar>
-                <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
+                {/* <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
                     <ModalHeader toggle={() => { this.setState({ isLogin: false, type: "LOGIN" }) }}>
                         {this.state.type === "LOGIN" ? `${this.props.t("login").toUpperCase()}` : `${this.props.t("signup").toUpperCase()}`}
                     </ModalHeader>
@@ -215,7 +215,7 @@ class Toolbar extends React.Component {
                                 {this.props.t("signup").toUpperCase()}
                             </Button>
                         </ModalBody>}
-                </Modal>
+                </Modal> */}
                 <Modal isOpen={this.state.isTreat} toggle={() => { this.setState({ isTreat: !this.state.isTreat }) }}>
                     <ModalHeader toggle={() => { this.setState({ isTreat: false }) }}>
                         {this.props.t("group-timings").toUpperCase()}
@@ -224,7 +224,7 @@ class Toolbar extends React.Component {
 
                     </ModalBody>
                 </Modal>
-                <div id="recaptcha-container"> </div>
+                {/* <div id="recaptcha-container"> </div> */}
             </div >
         )
     }

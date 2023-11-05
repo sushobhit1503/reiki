@@ -1,5 +1,5 @@
 import React from "react"
-import Photo from "../Assets/Photo.jpg"
+import Photo from "../Assets/Photo.jpeg"
 import { withTranslation } from "react-i18next"
 
 
