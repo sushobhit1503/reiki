@@ -49,7 +49,7 @@ class Feedback extends React.Component {
                 <div className="row px-2">
                     <div className="card col-xl-6 col-12">
                         <div className="card-body">
-                            <div className="row row-cols-1 row-cols-xl-2 g-3">
+                            <div className="row row-cols-1 row-cols-xl-2 g-3 mb-3">
                                 <div className="col">
                                     <Label className="">{this.props.t("enter-name")}</Label>
                                     <Input onChange={onChange} value={this.state.name} name="name" placeholder={this.props.t("enter-name")} className="mb-3" type="text" />

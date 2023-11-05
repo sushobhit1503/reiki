@@ -35,7 +35,7 @@ export const resources = {
         "no-test-description": "When you get ill, you have to do so many tests and you get irritated. Here you don't need to do any tests like blood test, X - Ray. We directly tell you what problem you have.",
         "free-consult": "Free Consultation",
         "free-consult-description": "Get free consultation.Reiki Grand master personally will consult you.",
-        "free-treat": "Free Treatment",
+        "free-treat": "First Treatment Free",
         "free-treat-description": "Everyday free group reiki is given. Get treatment and learn reiki while sitting at home as per your convenience.",
         "what-offer": "What we Offer ?",
         "reiki-degree": "Degrees of Reiki",
