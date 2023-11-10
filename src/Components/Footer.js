@@ -10,7 +10,7 @@ class Footer extends React.Component {
                         <div className="h3 fw-bold">
                             {this.props.t("about-centre").toUpperCase()}
                         </div>
-                        <div className="col-12">
+                        <div className="col-12 col-xl-10">
                             {this.props.t("about-centre-description")}
                         </div>
                     </div>
