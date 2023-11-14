@@ -110,8 +110,8 @@ class Register extends React.Component {
                             attendedOnce: false,
                             attendedLastOn: null,
                             id: localStorage.getItem("uid")
-                        }).then(() => {
-                            window.location.reload()
+                        }).then((result) => {
+                            console.log(result)
                         }).catch((err) => {
                             console.log(err.message)
                         })
