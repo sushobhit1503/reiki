@@ -23,6 +23,9 @@ class Footer extends React.Component {
                             <div>
                                 <a className="bg-primary-o text-decoration-none" href="/terms">{this.props.t("terms")}</a>
                             </div>
+                            <div>
+                                <a className="bg-primary-o text-decoration-none" href="/refund">{this.props.t("refund")}</a>
+                            </div>
                         </div>
                         <div className="col-6">
                             <div className="h4">{this.props.t("contact")}</div>

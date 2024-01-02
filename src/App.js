@@ -16,6 +16,7 @@ import About from './Pages/About';
 import Consultation from './Pages/Consultation';
 import Feedback from './Pages/Feedback';
 import PrivateRoute from './Components/PrivateRoute';
+import Refund from './Pages/Refund';
 
 class App extends React.Component {
   constructor() {
@@ -48,6 +49,7 @@ class App extends React.Component {
           <Route path="/experience" element={<Experience />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund" element={<Refund />} />
           <Route path="/terms" element={<Terms />} />
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/consultation" element={<Consultation />} />
