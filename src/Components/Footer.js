@@ -37,6 +37,8 @@ class Footer extends React.Component {
                             </div> */}
                             <div className="fw-bold">{this.props.t("email-address-heading")}</div>
                             <div className="mb-3">{this.props.t("email-address")}</div>
+                            <div className="fw-bold">{this.props.t("address-heading")}</div>
+                            <div className="mb-3">{this.props.t("address")}</div>
                             <div className="fw-bold">{this.props.t("contact-number-heading")}</div>
                             <div className="mb-3">{this.props.t("contact-number")}</div>
                             <div>
