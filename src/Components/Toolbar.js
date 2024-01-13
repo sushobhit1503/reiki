@@ -197,7 +197,7 @@ class Toolbar extends React.Component {
                                 <InputGroupText>
                                     +91
                                 </InputGroupText>
-                                <Input placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" />
+                                <Input placeholder={this.props.t("placeholder-number")} onChange={onChange} value={this.state.phoneNumber} name="phoneNumber" type="" />
                             </InputGroup>
                             {this.state.isLoading ? <Spinner>Loading ... </Spinner> : <div>
                                 {this.state.isClicked ? null : <div id="sentOTP" onClick={sendOTP} style={{ cursor: "pointer" }} className="fw-bold align-self-center">

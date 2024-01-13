@@ -95,7 +95,7 @@ class MyProfile extends React.Component {
                                 <div className="d-flex flex-column justify-content-center">
                                     {this.state.uploadedPicture ? <img alt="profilePicture" style={{ width: "200px", height: "200px", borderRadius: "200px" }} src={this.state.uploadedPicture} />
                                         : <i className="fa fa-user-circle" style={{ fontSize: "200px", color: "grey" }}></i>}
-                                    <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px" }} className="mt-2" type="file" />
+                                    <Input id="fileInput" onChange={fileChange} name="profilePicture" style={{ width: "200px" }} className="mt-2" type="file" accept="image/png, image/gif, image/jpeg" />
                                     <Button disabled={disabled} onClick={storePicture} type="file" color="success" className="mt-2" style={{ width: "200px" }}>{this.props.t("upload-photo").toUpperCase()}</Button>
                                 </div>
                                 <div className="d-flex flex-wrap gap-3">
@@ -146,7 +146,7 @@ class MyProfile extends React.Component {
                                                     <div>
                                                         {this.props.t("last-attended")}: 27th March 2023
                                                     </div>
-                                                    <a href="#" className="btn btn-info mt-3 align-items-center">
+                                                    <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" download className="btn btn-info mt-3 align-items-center">
                                                         <i className="bi bi-download me-2"></i>
                                                         {this.props.t("download-certificate")}
                                                     </a>
