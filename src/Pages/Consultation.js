@@ -1,11 +1,14 @@
 import React from "react"
 import { DateSlotPicker } from "react-dateslot-picker";
+import Schedule from "../Components/ScheduleMeeting";
 import "react-dateslot-picker/dist/style.css"
 import { Label, Input, FormGroup, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText, Button } from "reactstrap"
 import firebase from "../Config Files/firebaseConfig"
 import { firestore, auth } from "../Config Files/firebaseConfig"
 import { withTranslation } from "react-i18next";
 import Moment from "react-moment";
+import toast from "react-hot-toast";
+
 
 class Consultation extends React.Component {
     constructor() {
@@ -118,6 +121,7 @@ class Consultation extends React.Component {
                         problem: this.state.problem,
                         name: result.data().name
                     }).then(() => {
+                        toast.success("Booking Successful!")
                         window.location.reload()
                     }).catch((err) => {
                         console.log(err.message)
@@ -150,11 +154,7 @@ class Consultation extends React.Component {
                             <div className="row row-cols-xl-2 row-cols-1 g-3">
                                 <div className="col-12 col-md-6">
                                     {/* <div className="mt-3 h5">{this.props.t("select-date")}</div> */}
-                                    <DateSlotPicker
-                                        dailyTimePair={this.state.allTimeslots}
-                                        disableSpecific={this.state.allDates}
-                                        onSelectDatetime={(timestamp) => { this.setState({ timeslot: new Date(timestamp) }) }}
-                                    />
+                                   <Schedule/>
                                 </div>
                                 {/* <div className="col-12 col-xl-6">
                                     <div className="card">
