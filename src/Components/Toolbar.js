@@ -192,7 +192,7 @@ class Toolbar extends React.Component {
                         {this.state.type === "LOGIN" ? `${this.props.t("login").toUpperCase()}` : `${this.props.t("signup").toUpperCase()}`}
                     </ModalHeader>
                     {this.state.type === "LOGIN" ? <ModalBody>
-                        <div className="d-flex justify-content-between mb-3">
+                        <div className="d-flex justify-content-between mb-3 align-items-center">
                             <InputGroup className="w-75">
                                 <InputGroupText>
                                     +91
@@ -232,7 +232,7 @@ class Toolbar extends React.Component {
                         <ModalBody>
                             <Input onChange={onChange} value={this.state.name} name="name" placeholder={this.props.t("enter-name")} className="mb-3" type="text" />
                             <Input onChange={onChange} value={this.state.age} name="age" placeholder={this.props.t("enter-age")} className="mb-3" type="text" />
-                            <div className="d-flex mb-3 justify-content-between">
+                            <div className="d-flex mb-3 justify-content-between align-items-center">
                                 <InputGroup style={{ width: "70%" }}>
                                     <InputGroupText>
                                         +91

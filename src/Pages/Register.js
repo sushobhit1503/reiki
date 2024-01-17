@@ -1,7 +1,9 @@
 import React from "react";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { firestore } from "../Config Files/firebaseConfig";
+import firebase from "../Config Files/firebaseConfig";
 import { withTranslation } from "react-i18next";
+import Logo from "../Assets/HealingLogo.png"
 
 class Register extends React.Component {
   constructor() {
@@ -107,54 +109,54 @@ class Register extends React.Component {
       });
   }
   render() {
-    const loadScript = (src) => {
-      return new Promise((resolve) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.onload = () => {
-          resolve(true);
-        };
-        script.onerror = () => {
-          resolve(false);
-        };
-        document.body.appendChild(script);
-      });
-    };
-
     const onSubmit = async () => {
-      const res = await fetch("http://localhost:4000/api/checkout", {
-        method: "POST",
-        body: {
-          amount: 900,
-        },
-      });
-      const body = await res.json();
-      console.log(body.order.id);
-
+      const res = await loadScript(
+          "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      if (!res) return;
+      const { amount, name, phoneNumber } = this.state
       const options = {
-        key: "rzp_test_zOgxaVhcyOk8BU", // Enter the Key ID generated from the Dashboard
-        amount: "90000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: "INR",
-        name: "REIKI HEALING CENTRE",
-        description: "Test Transaction",
-        image: "https://example.com/your_logo",
-        order_id: body.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        callback_url: "http://localhost:4000/api/paymentverification/",
-        prefill: {
-          name: "Gaurav Kumar",
-          email: "gaurav.kumar@example.com",
-          contact: "9000090000",
-        },
-        notes: {
-          address: "Razorpay Corporate Office",
-        },
-        theme: {
-          color: "#3399cc",
-        },
+          key: "rzp_live_v7kcup1527wL4j",
+          currency: "INR",
+          amount: amount * 100,
+          name: "Reiki Healing Centre",
+          description: `Payment for ${localStorage.getItem("degree")}`,
+          image: Logo,
+          handler: function async(response) {
+              firestore.collection(localStorage.getItem("degree")).doc(localStorage.getItem("uid")).set({
+                  createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                  paymentId: response.razorpay_payment_id,
+                  id: localStorage.getItem("uid"),
+                  attendedOnce: false,
+                  courseName: localStorage.getItem ("degree"),
+                  name: name,
+                  paid: true,
+                  phoneNumber: phoneNumber
+              }).then(() => {
+                  window.location.href = "/"
+              }).catch(err => console.log(err.message))
+          },
+          prefill: {
+              name: name,
+              contact: phoneNumber,
+          },
       };
-      const razor = new window.Razorpay(options);
-      razor.open();
-    };
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+  };
+  const loadScript = (src) => {
+      return new Promise((resolve) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => {
+              resolve(true);
+          };
+          script.onerror = () => {
+              resolve(false);
+          };
+          document.body.appendChild(script);
+      });
+  };
     return (
       <div className="p-xl-5 p-3">
         <Breadcrumb className="mt-5">
