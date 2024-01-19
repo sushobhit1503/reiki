@@ -1,6 +1,5 @@
 import React from "react"
-import { DateSlotPicker } from "react-dateslot-picker";
-import Schedule from "../Components/ScheduleMeeting";
+import { ScheduleMeeting } from 'react-schedule-meeting';
 import "react-dateslot-picker/dist/style.css"
 import { Label, Input, FormGroup, Modal, ModalHeader, ModalBody, InputGroup, InputGroupText, Button } from "reactstrap"
 import firebase from "../Config Files/firebaseConfig"
@@ -9,6 +8,14 @@ import { withTranslation } from "react-i18next";
 import Moment from "react-moment";
 import toast from "react-hot-toast";
 
+const availableTimeslots = [0, 1, 2, 3, 4, 5].map((id) => {
+    return {
+        id,
+        startTime: new Date(new Date(new Date().setDate(new Date().getDate() + id)).setHours(9, 0, 0, 0)),
+        endTime: new Date(new Date(new Date().setDate(new Date().getDate() + id)).setHours(17, 0, 0, 0)),
+    };
+});
+
 
 class Consultation extends React.Component {
     constructor() {
@@ -16,9 +23,7 @@ class Consultation extends React.Component {
         this.state = {
             problem: "cold",
             duration: "week",
-            timeslot: "",
-            allTimeslots: [{ startTime: [13, 30], endTime: [23, 0] }],
-            allDates: ["1-5"],
+            selectedDate: "",
             isLogin: false,
             type: "LOGIN",
             otp: "",
@@ -32,23 +37,7 @@ class Consultation extends React.Component {
         }
     }
     componentDidMount() {
-        firestore.collection("appointmentSlots").get().then(Snapshot => {
-            let tempTimeslots = []
-            let dateSlots = []
-            Snapshot.forEach(document => {
-                const { date } = document.data()
-                if (!dateSlots.includes(date.split("-")[2])) {
-                    dateSlots.push(parseInt(date.split("-")[2]))
-                }
-            })
-            for (let index = 1; index <= 31; index++) {
-                if (!dateSlots.includes(index)) {
-                    dateSlots.push(index)
-                    console.log(dateSlots)
-                }
-            }
-            this.setState({ allTimeslots: tempTimeslots, allDates: dateSlots }, () => console.log(this.state.allDates))
-        }).catch(err => console.log(err.message))
+
     }
     render() {
         const onSubmit = () => {
@@ -132,7 +121,7 @@ class Consultation extends React.Component {
                 this.setState({ isLogin: true })
             }
         }
-        const disabled = !this.state.timeslot
+        const disabled = !this.state.selectedDate
         return (
             <div>
                 <div>
@@ -149,66 +138,20 @@ class Consultation extends React.Component {
                 </div>
                 <div className="d-xl-flex mb-xl-5 mb-3">
                     <div className="col-12 p-xl-5 p-3">
-                        <div className="h3 fw-bold">{this.props.t("appointment").toUpperCase()}</div>
+                        <div className="h3 fw-bold ms-3">{this.props.t("appointment").toUpperCase()}</div>
                         <div className="mt-3">
                             <div className="row row-cols-xl-2 row-cols-1 g-3">
-                                <div className="col-12 col-md-6">
-                                    {/* <div className="mt-3 h5">{this.props.t("select-date")}</div> */}
-                                   <Schedule/>
+                                <div className="col-12 col-md-7">
+                                    <ScheduleMeeting
+                                        borderRadius={10}
+                                        primaryColor="#157347"
+                                        eventDurationInMinutes={30}
+                                        availableTimeslots={availableTimeslots}
+                                        onStartTimeSelect={(selectedDate) => this.setState({ selectedDate: selectedDate.startTime },
+                                            () => console.log(this.state.selectedDate))}
+                                    />
                                 </div>
-                                {/* <div className="col-12 col-xl-6">
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <p className="fw-bold h5">
-                                                <span>Date:</span>{' '}
-                                                {this.state.date.toDateString()}
-                                            </p>
-                                            <div className="mb-3">
-                                                <span>Time Slot:</span>{' '}
-                                                9:00 - 10:00 AM
-                                            </div>
-                                            <FormGroup style={{width:"300px"}} className="mb-3">
-                                                <Label for="exampleSelect">
-                                                    Select your problem
-                                                </Label>
-                                                <Input id="exampleSelect" name="select" type="select">
-                                                    <option>
-                                                        Cold, Cough
-                                                    </option>
-                                                    <option>
-                                                        Fever
-                                                    </option>
-                                                    <option>
-                                                        Severe Disease
-                                                    </option>
-                                                    <option>
-                                                        Critical Problem
-                                                    </option>
-                                                </Input>
-                                            </FormGroup>
-                                            <FormGroup style={{width:"300px"}} className="mb-3">
-                                                <Label for="exampleSelect">
-                                                    From when are you suffering?
-                                                </Label>
-                                                <Input id="exampleSelect" name="select" type="select">
-                                                    <option>
-                                                        Less than 1 week
-                                                    </option>
-                                                    <option>
-                                                        1 week - 1 month
-                                                    </option>
-                                                    <option>
-                                                        More than 1 month
-                                                    </option>
-                                                </Input>
-                                            </FormGroup>
-                                            <button className="btn btn-success">
-                                                BOOK APPOINTMENT
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> */}
-                                <div className="col-12 col-md-6">
+                                <div className="col-12 col-md-5">
                                     <div className="card">
                                         <div className="card-body">
                                             {this.state.timeslot ? <div>

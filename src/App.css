@@ -68,6 +68,15 @@
     background-attachment: fixed;
 }
 
+.background-image-experience {
+    background-image: url("./Assets/background-experience.png");
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .background-image-consultation {
     background-image: url("./Assets/background-consultation.png");
     min-height: 600px;

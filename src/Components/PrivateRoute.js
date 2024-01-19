@@ -1,9 +1,9 @@
 import React from "react"
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({children}) => {
     let auth = localStorage.getItem("uid")
-    return (auth ? <Outlet /> : <Navigate to="/" />
+    return (auth ? {children} : <Navigate to="/" />
     );
 }
 
