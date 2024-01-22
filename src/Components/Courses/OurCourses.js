@@ -1,5 +1,4 @@
 import React from "react"
-import { Navigate } from "react-router-dom"
 import { Modal, ModalHeader, ModalBody, InputGroup, InputGroupText, Input, Button } from "reactstrap"
 import { auth, firestore } from "../../Config Files/firebaseConfig"
 import firebase from "../../Config Files/firebaseConfig"
@@ -89,7 +88,7 @@ class OurCourses extends React.Component {
                     <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
                         <div className="col">
                             <div className="card mb-2 h-100">
-                                <div className="card-body">
+                                <div className="card-body d-flex flex-column justify-content-between">
                                     <div className="h4 mb-2 fw-bold">{this.props.t("reiki-degree").toUpperCase()}</div>
                                     <div className="d-flex gap-2">
                                         <i className="bi bi-people-fill light-green-o"></i>
@@ -103,21 +102,23 @@ class OurCourses extends React.Component {
                                         <i className="bi bi-book-half light-green-o"></i>
                                         <div>{this.props.t("books-provided")}</div>
                                     </div>
-                                    <div className="mt-3 h5">
-                                        <i className="bi bi-currency-rupee"></i>{first_degree.cost} {this.props.t("onwards")}
+                                    <div className="mt-3">
+                                        <div className="h5">
+                                            <i className="bi bi-currency-rupee"></i>{first_degree.cost} {this.props.t("onwards")}
+                                        </div>
+                                        {!uid && <a href="#" onClick={() => this.setState({ isLogin: true })} className="btn btn-success mt-3">
+                                            {this.props.t("enrol")}
+                                        </a>}
+                                        {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
+                                            {this.props.t("enrol")}
+                                        </a>}
                                     </div>
-                                    {!uid && <a onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
-                                        {this.props.t("enrol")}
-                                    </a>}
-                                    {uid && <a href="/courses/reiki" className="btn btn-success mt-3">
-                                        {this.props.t("enrol")}
-                                    </a>}
                                 </div>
                             </div>
                         </div>
                         <div className="col">
                             <div className="card mb-2 h-100">
-                                <div className="card-body">
+                                <div className="card-body d-flex flex-column justify-content-between">
                                     <div className="h4 mb-2 fw-bold">{this.props.t("dowser").toUpperCase()}</div>
                                     <div className="d-flex gap-2">
                                         <i className="bi bi-people-fill light-green-o"></i>
@@ -131,15 +132,17 @@ class OurCourses extends React.Component {
                                         <i className="bi bi-basket-fill light-green-o"></i>
                                         <div>{this.props.t("material-provided")}</div>
                                     </div>
-                                    <div className="mt-3 h5">
-                                        <i className="bi bi-currency-rupee"></i>{dowser.cost}
+                                    <div className="mt-3">
+                                        <div className="h5">
+                                            <i className="bi bi-currency-rupee"></i>{dowser.cost}
+                                        </div>
+                                        {!uid && <a href="#" onClick={() => this.setState({ isLogin: true })} className="btn btn-success mt-3">
+                                            {this.props.t("enrol")}
+                                        </a>}
+                                        {uid && <a href="/register" className="btn btn-success mt-3">
+                                            {this.props.t("enrol")}
+                                        </a>}
                                     </div>
-                                    {!uid && <a onClick={() => this.setState ({isLogin: true})} className="btn btn-success mt-3">
-                                        {this.props.t("enrol")}
-                                    </a>}
-                                    {uid && <a href="/register" className="btn btn-success mt-3">
-                                        {this.props.t("enrol")}
-                                    </a>}
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import { auth, firestore } from "../Config Files/firebaseConfig"
 import Logo from "../Assets/HealingLogo.png"
 import firebase from "../Config Files/firebaseConfig"
 import { withTranslation } from "react-i18next"
-import { Navigate } from "react-router-dom"
 
 
 class Toolbar extends React.Component {
@@ -175,7 +174,7 @@ class Toolbar extends React.Component {
                                     {this.props.t("toolbar-option-7")}
                                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem className="h5 mb-0 fw-normal" onClick={() => { localStorage.removeItem("uid"); auth.signOut(); }}>
+                                <DropdownItem className="h5 mb-0 fw-normal" onClick={() => { localStorage.removeItem("uid"); window.location.reload() }}>
                                     {this.props.t("toolbar-option-8")}
                                 </DropdownItem>
                             </DropdownMenu>

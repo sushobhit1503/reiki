@@ -8,10 +8,10 @@ import { withTranslation } from "react-i18next";
 import Moment from "react-moment";
 import toast from "react-hot-toast";
 
-const availableTimeslots = [0, 1, 2, 3, 4, 5].map((id) => {
+const availableTimeslots = [0, 1, 2].map((id) => {
     return {
         id,
-        startTime: new Date(new Date(new Date().setDate(new Date().getDate() + id)).setHours(9, 0, 0, 0)),
+        startTime: new Date(new Date(new Date().setDate(new Date().getDate() + id)).setHours(12, 0, 0, 0)),
         endTime: new Date(new Date(new Date().setDate(new Date().getDate() + id)).setHours(17, 0, 0, 0)),
     };
 });
@@ -103,7 +103,7 @@ class Consultation extends React.Component {
             if (uid) {
                 firestore.collection("users").doc(uid).get().then(result => {
                     firestore.collection("appointment").doc().set({
-                        timeslot: this.state.timeslot,
+                        selectedDate: this.state.selectedDate,
                         uid: uid,
                         duration: this.state.duration,
                         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -147,7 +147,7 @@ class Consultation extends React.Component {
                                         primaryColor="#157347"
                                         eventDurationInMinutes={30}
                                         availableTimeslots={availableTimeslots}
-                                        onStartTimeSelect={(selectedDate) => this.setState({ selectedDate: selectedDate.startTime },
+                                        onStartTimeSelect={(selectedDate) => this.setState({ selectedDate: selectedDate.startTime.toISOString() },
                                             () => console.log(this.state.selectedDate))}
                                     />
                                 </div>

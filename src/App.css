@@ -50,6 +50,15 @@
     background-attachment: fixed;
 }
 
+.login-background {
+    background-image: url("./Assets/Login.png");
+    min-height: 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .background-image-about {
     background-image: url("./Assets/background-about.gif");
     min-height: 600px;

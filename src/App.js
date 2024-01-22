@@ -17,6 +17,7 @@ import Consultation from './Pages/Consultation';
 import Feedback from './Pages/Feedback';
 import PrivateRoute from './Components/PrivateRoute';
 import Refund from './Pages/Refund';
+import Login from './Pages/Login';
 
 class App extends React.Component {
   constructor() {
@@ -42,18 +43,19 @@ class App extends React.Component {
         <Toolbar />
         <Routes>
           <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/reiki" element={<ReikiCourse />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<MyProfile />} />
+          <Route path="/courses/reiki" element={<PrivateRoute><ReikiCourse /></PrivateRoute>} />
+          <Route path="/register" element={<PrivateRoute><Register /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><MyProfile /></PrivateRoute>} />
           <Route path="/about-reiki" element={<About />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/refund" element={<Refund />} />
           <Route path="/terms" element={<Terms />} />
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/consultation" element={<Consultation />} />
-          <Route exact path="/paymentsuccess" element={<Courses />} />
+          <Route exact path="/consultation" element={<PrivateRoute><Consultation /></PrivateRoute>} />
+          {/* <Route exact path="/paymentsuccess" element={<Courses />} /> */}
         </Routes>
         <Footer />
       </div>

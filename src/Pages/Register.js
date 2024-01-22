@@ -4,6 +4,7 @@ import { firestore } from "../Config Files/firebaseConfig";
 import firebase from "../Config Files/firebaseConfig";
 import { withTranslation } from "react-i18next";
 import Logo from "../Assets/HealingLogo.png"
+import Moment from "react-moment";
 
 class Register extends React.Component {
   constructor() {
@@ -26,6 +27,7 @@ class Register extends React.Component {
       result: null,
       phoneLock: false,
       user: {},
+      error: ""
     };
   }
   componentDidMount() {
@@ -58,7 +60,7 @@ class Register extends React.Component {
         this.setState({ user: document.data() });
         firestore
           .collection(
-            this.props.t(localStorage.getItem("degree")).toUpperCase()
+            localStorage.getItem("degree")
           )
           .doc(uid)
           .get()
@@ -111,52 +113,52 @@ class Register extends React.Component {
   render() {
     const onSubmit = async () => {
       const res = await loadScript(
-          "https://checkout.razorpay.com/v1/checkout.js"
+        "https://checkout.razorpay.com/v1/checkout.js"
       );
       if (!res) return;
       const { amount, name, phoneNumber } = this.state
       const options = {
-          key: "rzp_live_v7kcup1527wL4j",
-          currency: "INR",
-          amount: amount * 100,
-          name: "Reiki Healing Centre",
-          description: `Payment for ${localStorage.getItem("degree")}`,
-          image: Logo,
-          handler: function async(response) {
-              firestore.collection(localStorage.getItem("degree")).doc(localStorage.getItem("uid")).set({
-                  createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                  paymentId: response.razorpay_payment_id,
-                  id: localStorage.getItem("uid"),
-                  attendedOnce: false,
-                  courseName: localStorage.getItem ("degree"),
-                  name: name,
-                  paid: true,
-                  phoneNumber: phoneNumber
-              }).then(() => {
-                  window.location.href = "/"
-              }).catch(err => console.log(err.message))
-          },
-          prefill: {
-              name: name,
-              contact: phoneNumber,
-          },
+        key: "rzp_live_v7kcup1527wL4j",
+        currency: "INR",
+        amount: amount * 100,
+        name: "Reiki Healing Centre",
+        description: `Payment for ${localStorage.getItem("degree")}`,
+        image: Logo,
+        handler: function async(response) {
+          firestore.collection(localStorage.getItem("degree")).doc(localStorage.getItem("uid")).set({
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            paymentId: response.razorpay_payment_id,
+            id: localStorage.getItem("uid"),
+            attendedOnce: false,
+            courseName: localStorage.getItem("degree"),
+            name: name,
+            paid: true,
+            phoneNumber: phoneNumber
+          }).then(() => {
+            window.location.href = "/"
+          }).catch(err => console.log(err.message))
+        },
+        prefill: {
+          name: name,
+          contact: phoneNumber,
+        },
       };
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
-  };
-  const loadScript = (src) => {
+    };
+    const loadScript = (src) => {
       return new Promise((resolve) => {
-          const script = document.createElement("script");
-          script.src = src;
-          script.onload = () => {
-              resolve(true);
-          };
-          script.onerror = () => {
-              resolve(false);
-          };
-          document.body.appendChild(script);
+        const script = document.createElement("script");
+        script.src = src;
+        script.onload = () => {
+          resolve(true);
+        };
+        script.onerror = () => {
+          resolve(false);
+        };
+        document.body.appendChild(script);
       });
-  };
+    };
     return (
       <div className="p-xl-5 p-3">
         <Breadcrumb className="mt-5">
@@ -179,6 +181,9 @@ class Register extends React.Component {
                 <div className="h3 mb-2 fw-bold">
                   {this.props.t("guidelines")}
                 </div>
+                <div>
+                  Guidelines will be updated soon.
+                </div>
               </div>
             </div>
           </div>
@@ -200,7 +205,11 @@ class Register extends React.Component {
                   <div className="align-self-center">
                     {this.state.sessionDate === "NA"
                       ? `${this.props.t("date-announce")}`
-                      : `${this.state.sessionDate}`}
+                      :
+                      <Moment format="DD-MM-YYYY">
+                        {this.state.sessionDate}
+                      </Moment>
+                    }
                   </div>
                 </div>
                 <div className="d-flex">
@@ -244,7 +253,7 @@ class Register extends React.Component {
           </div>
           {!this.state.paid ? (
             <Button onClick={onSubmit} color="success">
-              <i className="fa-solid fa-coins me-2"></i>
+              {/* <i className="fa-solid fa-coins me-2"></i> */}
               {this.props.t("pay-now")}
             </Button>
           ) : (
