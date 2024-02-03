@@ -21,7 +21,7 @@ class HomePage extends React.Component {
                                 <div className="circles"></div>
                                 <div className="h3 fw-bold mb-0">{this.props.t("treat").toUpperCase()}</div>
                             </div>
-                            <div className="col-xl-8 col-12">
+                            <div className="col-xl-8 col-12 text-wrap">
                                 {this.props.t("home-page-description")}
                             </div>
                             <Button href="/courses" color="success" className="mt-3" >

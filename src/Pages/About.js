@@ -13,7 +13,7 @@ class About extends React.Component {
                             <div className="mt-5 h3 fw-bold mb-3">
                                 {this.props.t("what-reiki").toUpperCase()}
                             </div>
-                            <div className="col-xl-8 col-12">
+                            <div className="col-xl-8 col-4 text-wrap">
                                 {this.props.t("what-reiki-description")}
                             </div>
                             <Button href="/courses" color="success" className="mt-3" >
