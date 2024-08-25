@@ -51,6 +51,8 @@ class Toolbar extends React.Component {
                     age: parseInt(this.state.age),
                     currentDegree: 1,
                     coursesDone: []
+                }).then (() => {
+                    window.location.reload ()
                 })
             }).catch(err => {
                 this.setState({ error: this.props.t("otp-error") })
