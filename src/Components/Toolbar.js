@@ -43,6 +43,7 @@ class Toolbar extends React.Component {
     render() {
         const onSubmit = () => {
             this.state.result.confirm(this.state.otp).then((result) => {
+                localStorage.setItem("uid", result.user.uid)
                 firestore.collection("users").doc(result.user.uid).set({
                     id: result.user.uid,
                     name: this.state.name,
