@@ -26,7 +26,7 @@ class Experience extends React.Component {
                     <div className="background-image-experience pt-5 p-xl-5 p-3 row row-cols-xl-2 row-cols-1">
                         <div className="col align-self-center">
                             <div className="h3 fw-bold mt-5">{this.props.t("how-feels").toUpperCase()}</div>
-                            <div className="mt-3">
+                            <div className="mt-3 text-wrap">
                                 {this.props.t("experience-description")}
                             </div>
                         </div>
