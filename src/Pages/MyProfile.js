@@ -130,7 +130,7 @@ class MyProfile extends React.Component {
                                     </FormGroup>
                                 </div>
                             </div>
-                            <div className="h3 fw-bold mt-5">{this.props.t("enrolled-courses")}</div>
+                            {/* <div className="h3 fw-bold mt-5">{this.props.t("enrolled-courses")}</div>
                             <div className="row row-cols-md-2 row-cols-xl-4 row-cols-1 g-3 mt-3">
                                 {this.state.user?.coursesDone?.map(eachCourse => {
                                     return (
@@ -155,7 +155,7 @@ class MyProfile extends React.Component {
                                         </div>
                                     )
                                 })}
-                            </div>
+                            </div> */}
                         </div>
                     </div>}
             </div>

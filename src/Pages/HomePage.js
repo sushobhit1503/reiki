@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                 <WhyUs />
                 <WhatWeOffer />
                 <AboutMe />
-                {/* <FeedbackCarousel /> */}
+                <FeedbackCarousel />
             </div>
         )
     }

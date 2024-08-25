@@ -159,11 +159,11 @@ class Toolbar extends React.Component {
                                     {this.props.t("toolbar-option-3")}
                                 </NavLink>
                             </NavItem>
-                            <NavItem style={{ width: "max-content" }}>
+                            {/* <NavItem style={{ width: "max-content" }}>
                                 <NavLink href="/consultation" className={`h5 fw-normal mb-0 ${urlLink === "consultation" && "active-link"}`}>
                                     {this.props.t("toolbar-option-4")}
                                 </NavLink>
-                            </NavItem>
+                            </NavItem> */}
                         </Nav>
                         {localStorage.getItem("uid") ? <UncontrolledDropdown inNavbar>
                             <DropdownToggle style={{ width: "max-content" }} className="btn-primary rounded white gap-2 d-flex align-items-center" caret nav>
@@ -181,9 +181,9 @@ class Toolbar extends React.Component {
                         </UncontrolledDropdown> : <Button className="h5 mb-0 fw-normal" onClick={() => { this.setState({ isLogin: true }) }} color="primary" >
                             {this.props.t("toolbar-option-5")}
                         </Button>}
-                        <Button className="h5 fw-normal ms-md-3 mt-2 mt-md-0 mb-0" color="success" onClick={() => { this.setState({ isTreat: true }) }}>
+                        {/* <Button className="h5 fw-normal ms-md-3 mt-2 mt-md-0 mb-0" color="success" onClick={() => { this.setState({ isTreat: true }) }}>
                             {this.props.t("toolbar-option-6")}
-                        </Button>
+                        </Button> */}
                     </Collapse>
                 </Navbar>
                 <Modal isOpen={this.state.isLogin} toggle={() => { this.setState({ isLogin: !this.state.isLogin, type: "LOGIN" }) }}>
