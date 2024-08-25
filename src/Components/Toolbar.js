@@ -100,7 +100,7 @@ class Toolbar extends React.Component {
                                 this.setState({ error: "" })
                             }, 3000)
                         }
-                        if ((Snapshot.docs.length !== 0 && this.state.type === "LOGIN") || (Snapshot.docs.length === 0 && this.state.type === "SIGNUP")) {
+                        if ((Snapshot.docs.length !== 0 && this.state.type === "LOGIN") || (Snapshot.docs.length === 0 && this.state.type === "SIGN UP")) {
                             window.verifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
                                 'size': 'invisible',
                                 'callback': (response) => {
