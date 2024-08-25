@@ -6,7 +6,6 @@ import HomePage from "./Pages/HomePage"
 import Courses from './Pages/Courses';
 import ReikiCourse from './Components/Courses/ReikiCourse';
 import Register from './Pages/Register';
-import { auth } from "./Config Files/firebaseConfig";
 import MyProfile from './Pages/MyProfile';
 import Footer from "./Components/Footer";
 import Experience from './Pages/Experience';
@@ -30,12 +29,6 @@ class App extends React.Component {
     if (!localStorage.getItem("lang")) {
       localStorage.setItem("lang", "en")
     }
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        localStorage.setItem("uid", user.uid)
-        this.setState({ user: user })
-      }
-    })
   }
   render() {
     return (
