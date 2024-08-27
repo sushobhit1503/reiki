@@ -53,7 +53,7 @@ export const resources = {
         "master-profile": "I am Reiki Grand Master Jyoti Prabha Srivastava.The importance of Reiki in my life is equivalent to the importance of oxygen in anyone's life. When I was young I used to see others pains and problems, I used to cry and prayed to God that it would have been so grateful if I would have had any magical wand which could cure all of them. At that time I didn't know about Reiki. It is by God's grace that I got my first Reiki knowledge from my first Guru Smt. Suman Sharma in 1997. I am very grateful to her 🙏. Afterwards many Gurus came to my life some of them being Dr. Nand Kishore and Dr. Savita Sharma.I bow down to all of them. My objective of life is that through Reiki I should bring happiness and peace in everyone's life. I firmly believe that I just a medium. Ultimately everything is done by God.",
         "patients-say": "What our Patients Say ?",
         "about-centre": "About our Centre",
-        "about-centre-description": "Reiki Healing Centre cares for you. It cures all diseases, ailments and problem through divine healing in the form of reiki. You get free treatment and consultation from our Reiki Grandmaster Dr. Jyoti Prabha Srivastava. Learn healing and get degrees of reiki, dowser and attunements.",
+        "about-centre-description": "Reiki Healing Centre cares for you. It cures all diseases, ailments and problem through divine healing in the form of reiki. You get free treatment and consultation from our Reiki Grandmaster Jyoti Prabha Srivastava. Learn healing and get degrees of reiki, dowser and attunements.",
         "legal": "Legal",
         "privacy": "Privacy",
         "terms": "Terms and Conditions",
