@@ -92,7 +92,7 @@ class OurCourses extends React.Component {
                                     <div className="h4 mb-2 fw-bold">{this.props.t("reiki-degree").toUpperCase()}</div>
                                     <div className="d-flex gap-2">
                                         <i className="bi bi-people-fill light-green-o"></i>
-                                        <div>38 {this.props.t("people-completed")}</div>
+                                        <div>2000 {this.props.t("people-completed")}</div>
                                     </div>
                                     {/* <div className="d-flex gap-2">
                                         <i className="bi bi-stopwatch-fill light-green-o"></i>
@@ -122,7 +122,7 @@ class OurCourses extends React.Component {
                                     <div className="h4 mb-2 fw-bold">{this.props.t("dowser").toUpperCase()}</div>
                                     <div className="d-flex gap-2">
                                         <i className="bi bi-people-fill light-green-o"></i>
-                                        <div>2 {this.props.t("people-completed")}</div>
+                                        <div>15 {this.props.t("people-completed")}</div>
                                     </div>
                                     {/* <div className="d-flex gap-2">
                                         <i className="bi bi-stopwatch-fill light-green-o"></i>
